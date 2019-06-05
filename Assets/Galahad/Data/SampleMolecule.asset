@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c409ef2b4713e4519a94df19a33d95c0, type: 3}
+  m_Name: SampleMolecule
+  m_EditorClassIdentifier: 
+  molecules:
+  - atoms:
+    - atomicNumber: 8
+      atomIndex: 0
+      formalCharge: 0
+      position: {x: 0, y: 0, z: 0}
+    - atomicNumber: 1
+      atomIndex: 1
+      formalCharge: 0
+      position: {x: 1, y: 0, z: 0}
+    - atomicNumber: 1
+      atomIndex: 2
+      formalCharge: 0
+      position: {x: 0, y: 1, z: 0}
+    bonds:
+    - beginAtomIndex: 0
+      bondIndex: 0
+      bondOrder: 1
+      endAtomIndex: 1
+    - beginAtomIndex: 0
+      bondIndex: 1
+      bondOrder: 1
+      endAtomIndex: 2
+    identifier: 505fca9a-592c-46a9-a4fa-cb96036cd50a
+    offsetPosition: {x: 0, y: 0, z: 0}
+    title: water
+  runtimeJson: 
