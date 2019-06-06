@@ -6,35 +6,46 @@ using UnityEngine;
 namespace Galahad.MoleculeViewerContext.Domain.MoleculeAggregate
 {
     [Serializable]
-    public class Molecule: ISerializationCallbackReceiver
+    public class Molecule : ISerializationCallbackReceiver
     {
         [SerializeField] private List<Atom> atoms;
-        [SerializeField] private List<Bond> bonds;        
-        
-        private Atoms _atoms;
-        private Bonds _bonds;
+        [SerializeField] private List<Bond> bonds;
+        [SerializeField] private string identifier;
+        [SerializeField] private Vector3 offsetPosition;
+        [SerializeField] private string title;
 
-        public Molecule(Atoms atoms, Bonds bonds)
+        public Molecule(Atoms atoms, Bonds bonds, Position offsetPosition, string title)
         {
-            _atoms = atoms;
-            _bonds = bonds;
+            Atoms = atoms;
+            Bonds = bonds;
+            Identifier = Guid.NewGuid().ToString();
+            OffsetPosition = offsetPosition;
+            Title = title;
         }
 
-        public Atoms Atoms => _atoms;
+        public Position OffsetPosition { get; private set; }
 
-        public Bonds Bonds => _bonds;
-
+        public string Identifier { get; private set; }
+        public string Title { get; private set; }
+        public Atoms Atoms { get; private set; }
+        public Bonds Bonds { get; private set; }
 
         public void OnBeforeSerialize()
         {
-            atoms = _atoms?.ToList();
-            bonds = _bonds?.ToList();
+            identifier = Identifier;
+            title = Title;
+            atoms = Atoms?.ToList();
+            bonds = Bonds?.ToList();
+            offsetPosition = OffsetPosition?.Value ?? Vector3.zero;
         }
 
         public void OnAfterDeserialize()
         {
-            _atoms = new Atoms(atoms);
-            _bonds = new Bonds(bonds);
+            Identifier = identifier ?? Guid.NewGuid().ToString();
+            Title = title;
+            Atoms = new Atoms(atoms);
+            Bonds = new Bonds(bonds);
+            OffsetPosition = new Position(offsetPosition);
         }
     }
 }

@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2690c82a-0e85-4eb8-85f2-d897f3d25c9f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galahad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Galahad/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Galahad/images/image4.png.meta" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,50 +21,86 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Atom.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Molecule.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+            <state relative-caret-position="493">
+              <caret line="43" column="64" selection-start-line="43" selection-start-column="64" selection-end-line="43" selection-end-column="64" />
               <folding>
-                <marker date="1559709743092" expanded="false" signature="6:122" ph="..." />
-                <marker date="1559709743092" expanded="true" signature="242:1436" ph="{...}" />
-                <marker date="1559709743092" expanded="true" signature="317:1228" ph="{...}" />
-                <marker date="1559709743092" expanded="true" signature="671:762" ph="{...}" />
-                <marker date="1559709743092" expanded="true" signature="852:1019" ph="{...}" />
-                <marker date="1559709743092" expanded="true" signature="1061:1222" ph="{...}" />
-                <marker date="1559709743092" expanded="true" signature="1252:1434" ph="{...}" />
-                <marker date="1559709743092" expanded="true" signature="1333:1381" ph="{...}" />
+                <marker date="1560072600208" expanded="false" signature="6:122" ph="..." />
+                <marker date="1560072600208" expanded="true" signature="188:1651" ph="{...}" />
+                <marker date="1560072600208" expanded="true" signature="268:1649" ph="{...}" />
+                <marker date="1560072600208" expanded="true" signature="622:820" ph="{...}" />
+                <marker date="1560072600208" expanded="true" signature="1127:1353" ph="{...}" />
+                <marker date="1560072600208" expanded="true" signature="1395:1643" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Position.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeUpdateService.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+            <state relative-caret-position="315">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
-                <marker date="1559709453056" expanded="true" signature="6:31" ph="..." />
-                <marker date="1559709453056" expanded="true" signature="91:250" ph="{...}" />
-                <marker date="1559709453056" expanded="true" signature="144:248" ph="{...}" />
-                <marker date="1559709453056" expanded="true" signature="192:242" ph="{...}" />
+                <marker date="1560072600175" expanded="false" signature="6:102" ph="..." />
+                <marker date="1560072600175" expanded="true" signature="136:1249" ph="{...}" />
+                <marker date="1560072600175" expanded="true" signature="193:1247" ph="{...}" />
+                <marker date="1560072600175" expanded="true" signature="465:823" ph="{...}" />
+                <marker date="1560072600175" expanded="true" signature="635:799" ph="{...}" />
+                <marker date="1560072600175" expanded="true" signature="904:1241" ph="{...}" />
+                <marker date="1560072600175" expanded="true" signature="939:1231" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomIndex.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeRepository.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="77" column="69" selection-start-line="77" selection-start-column="69" selection-end-line="77" selection-end-column="69" />
+              <folding>
+                <marker date="1560072600169" expanded="false" signature="6:192" ph="..." />
+                <marker date="1560072600169" expanded="true" signature="226:2591" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="335:2589" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="526:576" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="634:724" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="774:859" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="915:1298" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="1358:1418" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="1466:1690" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="1723:1797" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="1849:1906" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="1963:2174" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="2238:2473" ph="{...}" />
+                <marker date="1560072600169" expanded="true" signature="2521:2583" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/SampleMolecule.asset">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/Editor/MoleculeRepositoryInspector.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+              <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
               <folding>
-                <marker date="1559707822666" expanded="true" signature="58:242" ph="{...}" />
-                <marker date="1559707822666" expanded="true" signature="87:240" ph="{...}" />
-                <marker date="1559707822666" expanded="true" signature="153:197" ph="{...}" />
+                <marker date="1560072600159" expanded="false" signature="6:155" ph="..." />
+                <marker date="1560072600159" expanded="true" signature="196:1798" ph="{...}" />
+                <marker date="1560072600159" expanded="true" signature="311:1796" ph="{...}" />
+                <marker date="1560072600159" expanded="true" signature="545:677" ph="{...}" />
+                <marker date="1560072600159" expanded="true" signature="715:853" ph="{...}" />
+                <marker date="1560072600159" expanded="true" signature="815:843" ph="{...}" />
+                <marker date="1560072600159" expanded="true" signature="900:1311" ph="{...}" />
+                <marker date="1560072600159" expanded="true" signature="1375:1790" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -64,52 +109,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomicNumber.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <marker date="1559704395681" expanded="true" signature="58:425" ph="{...}" />
-                <marker date="1559704395681" expanded="true" signature="89:423" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/AtomPresenter.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-              <folding>
-                <marker date="1559709066799" expanded="true" signature="6:80" ph="..." />
-                <marker date="1559709066799" expanded="true" signature="131:245" ph="{...}" />
-                <marker date="1559709066799" expanded="true" signature="192:243" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculePresenter.cs">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
               <folding>
-                <marker date="1559709743096" expanded="true" signature="6:80" ph="..." />
-                <marker date="1559709743096" expanded="true" signature="131:871" ph="{...}" />
-                <marker date="1559709743096" expanded="true" signature="184:869" ph="{...}" />
-                <marker date="1559709743096" expanded="true" signature="385:863" ph="{...}" />
-                <marker date="1559709743096" expanded="true" signature="444:635" ph="{...}" />
-                <marker date="1559709743096" expanded="true" signature="699:851" ph="{...}" />
+                <marker date="1560072600203" expanded="true" signature="58:458" ph="{...}" />
+                <marker date="1560072600203" expanded="true" signature="89:456" ph="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -117,48 +122,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/BondPresenter.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="18" column="67" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
               <folding>
-                <marker date="1559709276420" expanded="true" signature="6:74" ph="..." />
-                <marker date="1559709276420" expanded="true" signature="125:226" ph="{...}" />
-                <marker date="1559709276420" expanded="true" signature="174:224" ph="{...}" />
+                <marker date="1560072600220" expanded="false" signature="6:93" ph="..." />
+                <marker date="1560072600220" expanded="true" signature="144:3225" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="193:3223" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="340:683" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="727:1150" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="1202:2118" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="1322:2077" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="1490:2059" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="2162:2833" ph="{...}" />
+                <marker date="1560072600220" expanded="true" signature="2879:3217" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Bond.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-              <folding>
-                <marker date="1559708295064" expanded="true" signature="6:128" ph="..." />
-                <marker date="1559708295064" expanded="true" signature="188:1285" ph="{...}" />
-                <marker date="1559708295064" expanded="true" signature="263:1013" ph="{...}" />
-                <marker date="1559708295064" expanded="true" signature="540:650" ph="{...}" />
-                <marker date="1559708295064" expanded="true" signature="691:825" ph="{...}" />
-                <marker date="1559708295064" expanded="true" signature="867:1007" ph="{...}" />
-                <marker date="1559708295064" expanded="true" signature="1037:1283" ph="{...}" />
-                <marker date="1559708295064" expanded="true" signature="1127:1175" ph="{...}" />
-              </folding>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="435">
+                <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Molecule.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/AtomPresenter.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="225">
+              <caret line="20" column="78" selection-start-line="20" selection-start-column="78" selection-end-line="20" selection-end-column="78" />
               <folding>
-                <marker date="1559708881918" expanded="false" signature="6:122" ph="..." />
-                <marker date="1559708881918" expanded="true" signature="188:943" ph="{...}" />
-                <marker date="1559708881918" expanded="true" signature="267:941" ph="{...}" />
-                <marker date="1559708881918" expanded="true" signature="503:579" ph="{...}" />
-                <marker date="1559708881918" expanded="true" signature="699:795" ph="{...}" />
-                <marker date="1559708881918" expanded="true" signature="837:935" ph="{...}" />
+                <marker date="1560072600214" expanded="false" signature="6:106" ph="..." />
+                <marker date="1560072600214" expanded="true" signature="157:1208" ph="{...}" />
+                <marker date="1560072600214" expanded="true" signature="206:1206" ph="{...}" />
+                <marker date="1560072600214" expanded="true" signature="324:709" ph="{...}" />
+                <marker date="1560072600214" expanded="true" signature="748:1200" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -170,40 +174,84 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/ArrowPresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomicNumber.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Atom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculePresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/AtomPresenter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/AtomPresenter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Position.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Bond.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/ChemicalReactionPresenter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeUpdateService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Bond.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReactionAggregate/ElementaryProcess.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/SampleMolecule.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomIndex.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/BondPresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Molecule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReactionAggregate/ChemicalReaction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Atom.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/IMoleculeRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondIndex.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Internal/Assert.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/View/AtomColorPalette.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ValueObject/ArrowTarget.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ValueObject/Arrow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculeViewer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Position.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondOrder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/FormalCharge.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/Editor/MoleculeRepositoryInspector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/BondPresenter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Install/ScriptableObjectInstallerBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Bond.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/AtomPresenter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Charge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondOrder.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomType.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomIndex.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Bond.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Molecule.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/AtomPresenter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/BondPresenter.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Position.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/IArrowTarget.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/Arrow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/ArrowPresenter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/AtomPresenter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/BondPresenter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/ChemicalReactionPresenter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/Atom.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/Bond.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/Molecule.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculeVIewer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/IMoleculeRepository.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ElementaryProcess.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReaction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReactionAggregate/ChemicalReaction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReactionAggregate/ElementaryProcess.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReactionAggregate/Arrow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/Arrow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ValueObject/ArrowTarget.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ValueObject/Arrow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondIndex.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Charge.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondOrder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/View/AtomColorPalette.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/FormalCharge.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Bond.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Atom.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/Editor/MoleculeRepositoryEditorExtension.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/AtomPresenter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeRepository.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculePresenter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/BondPresenter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculeViewer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomicNumber.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeUpdateService.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/Editor/MoleculeRepositoryInspector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Molecule.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -213,10 +261,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
-      </pane>
-      <pane id="FileSystemExplorer" />
       <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
         <subPane>
@@ -248,8 +292,7 @@
               <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
               <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
               <item name="Galahad" type="1045f7f1:UnityExplorerNode" />
-              <item name="CurvedArrowFormalismContext" type="1045f7f1:UnityExplorerNode" />
-              <item name="Presenter" type="1045f7f1:UnityExplorerNode" />
+              <item name="MoleculeViewerContext" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
@@ -257,6 +300,7 @@
               <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
               <item name="Galahad" type="1045f7f1:UnityExplorerNode" />
               <item name="MoleculeViewerContext" type="1045f7f1:UnityExplorerNode" />
+              <item name="images" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
@@ -268,6 +312,10 @@
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,7 +324,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -314,12 +362,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559702797632</updated>
-      <workItem from="1559702803710" duration="5737000" />
+      <workItem from="1559702803710" duration="52365000" />
+      <workItem from="1560072456195" duration="2061000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5737000" />
+    <option name="totallyTimeSpent" value="54426000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -331,35 +380,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21428572" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32967034" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.25" />
+      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="1" />
+      <window_info anchor="bottom" id="Unit Tests" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49930555" visible="true" weight="0.3043478" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50069445" side_tool="true" weight="0.3043478" />
+      <window_info anchor="bottom" id="Database Changes" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" />
+      <window_info anchor="bottom" id="Run" order="10" />
+      <window_info anchor="bottom" id="Debug" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="14" />
+      <window_info anchor="right" id="Errors In Solution" order="0" />
+      <window_info anchor="right" id="Database" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="3" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="5" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,79 +426,164 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Bond.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/Arrow.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/ArrowPresenter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/AtomPresenter.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/BondPresenter.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/Atom.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/Bond.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/Molecule.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Install/ScriptableObjectInstallerBase.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <marker date="1559702450784" expanded="false" signature="24:50" ph="..." />
+            <marker date="1559702450784" expanded="true" signature="69:672" ph="{...}" />
+            <marker date="1559702450784" expanded="true" signature="76:227" ph="/* We'd prefer to make this abstract but Unity 5.3.5 has a bug where references ... */" />
+            <marker date="1559702450784" expanded="true" signature="305:670" ph="{...}" />
+            <marker date="1559702450784" expanded="true" signature="401:460" ph="{...}" />
+            <marker date="1559702450784" expanded="true" signature="495:548" ph="{...}" />
+            <marker date="1559702450784" expanded="true" signature="595:664" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Internal/Assert.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-146">
+          <caret line="357" selection-start-line="357" selection-end-line="357" />
+          <folding>
+            <marker date="1559702450785" expanded="false" signature="6:107" ph="..." />
+            <marker date="1559702450785" expanded="true" signature="129:13142" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="162:13140" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="293:423" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="331:413" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="551:716" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="604:706" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="928:1149" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="971:1139" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="1290:1520" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="1337:1510" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="1647:1699" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="1842:2105" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="1881:2095" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="2236:2434" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="2286:2424" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="2572:2792" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="2629:2782" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="2942:3158" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="3004:3148" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="3315:3553" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="3384:3543" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="3762:3820" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="4060:4378" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="4115:4368" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="4550:4801" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="4648:4791" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="5026:5332" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="5081:5322" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="5549:5610" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="5858:6179" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="5911:6169" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="6303:6506" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="6342:6496" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="6646:6811" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="6685:6801" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="7024:7197" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="7063:7187" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="7324:7498" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="7363:7488" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="7641:7785" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="7680:7775" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="8001:8153" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="8040:8143" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="8380:8536" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="8419:8526" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="8696:8900" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="8734:8890" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="9133:9414" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="9187:9404" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="9540:9681" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="9578:9671" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="9838:9996" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="9876:9986" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="10151:10292" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="10189:10282" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="10520:10669" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="10558:10659" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="10908:11061" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="10946:11051" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="11311:11468" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="11349:11458" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="11610:11757" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="11648:11747" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="11884:11943" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="12123:12444" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="12149:12203" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="12234:12286" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="12502:12578" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="12650:12720" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="12820:12906" ph="{...}" />
+            <marker date="1559702450785" expanded="true" signature="13032:13134" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/IArrowTarget.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/ChemicalReactionPresenter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReactionAggregate/ElementaryProcess.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ChemicalReactionAggregate/ChemicalReaction.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="40" />
+          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Charge.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ValueObject/ArrowTarget.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="105">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondOrder.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Charge.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Domain/ValueObject/Arrow.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="225">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/Presenter/AtomPresenter.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/IMoleculeRepository.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1559703089941" expanded="true" signature="75:147" ph="{...}" />
-            <marker date="1559703089941" expanded="true" signature="124:145" ph="{...}" />
-          </folding>
+        <state relative-caret-position="210">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Position.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="105">
           <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding>
-            <marker date="1559709453056" expanded="true" signature="6:31" ph="..." />
-            <marker date="1559709453056" expanded="true" signature="91:250" ph="{...}" />
-            <marker date="1559709453056" expanded="true" signature="144:248" ph="{...}" />
-            <marker date="1559709453056" expanded="true" signature="192:242" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Molecule.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <marker date="1559708881918" expanded="false" signature="6:122" ph="..." />
-            <marker date="1559708881918" expanded="true" signature="188:943" ph="{...}" />
-            <marker date="1559708881918" expanded="true" signature="267:941" ph="{...}" />
-            <marker date="1559708881918" expanded="true" signature="503:579" ph="{...}" />
-            <marker date="1559708881918" expanded="true" signature="699:795" ph="{...}" />
-            <marker date="1559708881918" expanded="true" signature="837:935" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/Bond.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding>
-            <marker date="1559708295064" expanded="true" signature="6:128" ph="..." />
-            <marker date="1559708295064" expanded="true" signature="188:1285" ph="{...}" />
-            <marker date="1559708295064" expanded="true" signature="263:1013" ph="{...}" />
-            <marker date="1559708295064" expanded="true" signature="540:650" ph="{...}" />
-            <marker date="1559708295064" expanded="true" signature="691:825" ph="{...}" />
-            <marker date="1559708295064" expanded="true" signature="867:1007" ph="{...}" />
-            <marker date="1559708295064" expanded="true" signature="1037:1283" ph="{...}" />
-            <marker date="1559708295064" expanded="true" signature="1127:1175" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -458,87 +591,222 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/FormalCharge.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondIndex.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Atom.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Bond.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/New Molecule Repository.asset" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/BondOrder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculeViewer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculePresenter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
           <folding>
-            <marker date="1559707822666" expanded="true" signature="58:242" ph="{...}" />
-            <marker date="1559707822666" expanded="true" signature="87:240" ph="{...}" />
-            <marker date="1559707822666" expanded="true" signature="153:197" ph="{...}" />
+            <marker date="1560072600228" expanded="false" signature="6:191" ph="..." />
+            <marker date="1560072600228" expanded="true" signature="242:1609" ph="{...}" />
+            <marker date="1560072600228" expanded="true" signature="295:1607" ph="{...}" />
+            <marker date="1560072600228" expanded="true" signature="563:1601" ph="{...}" />
+            <marker date="1560072600228" expanded="true" signature="780:1255" ph="{...}" />
+            <marker date="1560072600228" expanded="true" signature="1307:1589" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/View/AtomColorPalette.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+          <folding>
+            <marker date="1560072600182" expanded="true" signature="6:156" ph="..." />
+            <marker date="1560072600182" expanded="true" signature="202:1388" ph="{...}" />
+            <marker date="1560072600182" expanded="true" signature="301:1103" ph="{...}" />
+            <marker date="1560072600182" expanded="true" signature="600:744" ph="{...}" />
+            <marker date="1560072600182" expanded="true" signature="786:1097" ph="{...}" />
+            <marker date="1560072600182" expanded="true" signature="982:1087" ph="{...}" />
+            <marker date="1560072600182" expanded="true" signature="1257:1378" ph="{...}" />
+            <marker date="1560072600182" expanded="true" signature="1310:1372" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/ValueObject/AtomicNumber.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="345">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
           <folding>
-            <marker date="1559704395681" expanded="true" signature="58:425" ph="{...}" />
-            <marker date="1559704395681" expanded="true" signature="89:423" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Atom.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-          <folding>
-            <marker date="1559709743092" expanded="false" signature="6:122" ph="..." />
-            <marker date="1559709743092" expanded="true" signature="242:1436" ph="{...}" />
-            <marker date="1559709743092" expanded="true" signature="317:1228" ph="{...}" />
-            <marker date="1559709743092" expanded="true" signature="671:762" ph="{...}" />
-            <marker date="1559709743092" expanded="true" signature="852:1019" ph="{...}" />
-            <marker date="1559709743092" expanded="true" signature="1061:1222" ph="{...}" />
-            <marker date="1559709743092" expanded="true" signature="1252:1434" ph="{...}" />
-            <marker date="1559709743092" expanded="true" signature="1333:1381" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/AtomPresenter.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding>
-            <marker date="1559709066799" expanded="true" signature="6:80" ph="..." />
-            <marker date="1559709066799" expanded="true" signature="131:245" ph="{...}" />
-            <marker date="1559709066799" expanded="true" signature="192:243" ph="{...}" />
+            <marker date="1560072600203" expanded="true" signature="58:458" ph="{...}" />
+            <marker date="1560072600203" expanded="true" signature="89:456" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/BondPresenter.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="120">
+          <caret line="18" column="67" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
           <folding>
-            <marker date="1559709276420" expanded="true" signature="6:74" ph="..." />
-            <marker date="1559709276420" expanded="true" signature="125:226" ph="{...}" />
-            <marker date="1559709276420" expanded="true" signature="174:224" ph="{...}" />
+            <marker date="1560072600220" expanded="false" signature="6:93" ph="..." />
+            <marker date="1560072600220" expanded="true" signature="144:3225" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="193:3223" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="340:683" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="727:1150" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="1202:2118" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="1322:2077" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="1490:2059" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="2162:2833" ph="{...}" />
+            <marker date="1560072600220" expanded="true" signature="2879:3217" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/MoleculePresenter.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Presenter/AtomPresenter.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+        <state relative-caret-position="225">
+          <caret line="20" column="78" selection-start-line="20" selection-start-column="78" selection-end-line="20" selection-end-column="78" />
           <folding>
-            <marker date="1559709743096" expanded="true" signature="6:80" ph="..." />
-            <marker date="1559709743096" expanded="true" signature="131:871" ph="{...}" />
-            <marker date="1559709743096" expanded="true" signature="184:869" ph="{...}" />
-            <marker date="1559709743096" expanded="true" signature="385:863" ph="{...}" />
-            <marker date="1559709743096" expanded="true" signature="444:635" ph="{...}" />
-            <marker date="1559709743096" expanded="true" signature="699:851" ph="{...}" />
+            <marker date="1560072600214" expanded="false" signature="6:106" ph="..." />
+            <marker date="1560072600214" expanded="true" signature="157:1208" ph="{...}" />
+            <marker date="1560072600214" expanded="true" signature="206:1206" ph="{...}" />
+            <marker date="1560072600214" expanded="true" signature="324:709" ph="{...}" />
+            <marker date="1560072600214" expanded="true" signature="748:1200" ph="{...}" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/Domain/MoleculeAggregate/Molecule.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="43" column="64" selection-start-line="43" selection-start-column="64" selection-end-line="43" selection-end-column="64" />
+          <folding>
+            <marker date="1560072600208" expanded="false" signature="6:122" ph="..." />
+            <marker date="1560072600208" expanded="true" signature="188:1651" ph="{...}" />
+            <marker date="1560072600208" expanded="true" signature="268:1649" ph="{...}" />
+            <marker date="1560072600208" expanded="true" signature="622:820" ph="{...}" />
+            <marker date="1560072600208" expanded="true" signature="1127:1353" ph="{...}" />
+            <marker date="1560072600208" expanded="true" signature="1395:1643" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeUpdateService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <marker date="1560072600175" expanded="false" signature="6:102" ph="..." />
+            <marker date="1560072600175" expanded="true" signature="136:1249" ph="{...}" />
+            <marker date="1560072600175" expanded="true" signature="193:1247" ph="{...}" />
+            <marker date="1560072600175" expanded="true" signature="465:823" ph="{...}" />
+            <marker date="1560072600175" expanded="true" signature="635:799" ph="{...}" />
+            <marker date="1560072600175" expanded="true" signature="904:1241" ph="{...}" />
+            <marker date="1560072600175" expanded="true" signature="939:1231" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/Editor/MoleculeRepositoryInspector.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding>
+            <marker date="1560072600159" expanded="false" signature="6:155" ph="..." />
+            <marker date="1560072600159" expanded="true" signature="196:1798" ph="{...}" />
+            <marker date="1560072600159" expanded="true" signature="311:1796" ph="{...}" />
+            <marker date="1560072600159" expanded="true" signature="545:677" ph="{...}" />
+            <marker date="1560072600159" expanded="true" signature="715:853" ph="{...}" />
+            <marker date="1560072600159" expanded="true" signature="815:843" ph="{...}" />
+            <marker date="1560072600159" expanded="true" signature="900:1311" ph="{...}" />
+            <marker date="1560072600159" expanded="true" signature="1375:1790" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/MoleculeRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="77" column="69" selection-start-line="77" selection-start-column="69" selection-end-line="77" selection-end-column="69" />
+          <folding>
+            <marker date="1560072600169" expanded="false" signature="6:192" ph="..." />
+            <marker date="1560072600169" expanded="true" signature="226:2591" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="335:2589" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="526:576" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="634:724" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="774:859" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="915:1298" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="1358:1418" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="1466:1690" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="1723:1797" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="1849:1906" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="1963:2174" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="2238:2473" ph="{...}" />
+            <marker date="1560072600169" expanded="true" signature="2521:2583" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/Infrastructure/SampleMolecule.asset">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/images/image1.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/MoleculeViewerContext/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="435">
+            <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Galahad/CurvedArrowFormalismContext/image1.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea3fd81fb702480d89ebc34298338af, type: 3}
+  m_Name: Cartoon
+  m_EditorClassIdentifier: 
+  names:
+  - H
+  - He
+  - Li
+  - Be
+  - B
+  - C
+  - N
+  - O
+  - F
+  - Ne
+  - Na
+  - Mg
+  - Al
+  - Si
+  - P
+  - S
+  - Cl
+  - Ar
+  - K
+  - Ca
+  - Sc
+  - Ti
+  materials:
+  - {fileID: 2100000, guid: e7173d2a900474d7b9d9b39f6debb6f6, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: c78c990366b224649afcf8ef600a22cc, type: 2}
+  - {fileID: 2100000, guid: 6fbd17873cb4041cfa8453ab3f98204a, type: 2}
+  - {fileID: 2100000, guid: 7350ba8318d484ff79d087f0d0116d7c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: 37148efb73f5544fc9fe75cbb3386c29, type: 2}
+  - {fileID: 2100000, guid: 56ab9124a52464dd2a2f56216f8b4317, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: 689eec5ae932e41bf91b9c7ec1953e52, type: 2}

@@ -22,5 +22,7 @@ namespace Galahad.MoleculeViewerContext.Domain.ValueObject
         Ar = 18,
         K = 19,
         Ca = 20,
+        Sc = 21,
+        Ti = 22
     }
 }

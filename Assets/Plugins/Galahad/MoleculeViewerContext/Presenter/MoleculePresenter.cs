@@ -1,27 +1,40 @@
 using Galahad.MoleculeViewerContext.Domain.MoleculeAggregate;
+using Galahad.MoleculeViewerContext.Domain.ValueObject;
+using Galahad.MoleculeViewerContext.View;
+using UniRx;
 using UnityEngine;
 
 namespace Galahad.MoleculeViewerContext.Presenter
 {
     public class MoleculePresenter : MonoBehaviour
     {
-        [SerializeField] private Molecule molecule;
-        [SerializeField] private GameObject atomPrefab;
-        [SerializeField] private GameObject bondPrefab;
+        [SerializeField] public AtomColorPalette atomColorPalette;
+        [SerializeField] public AtomPresenter atomPrefab;
+        [SerializeField] public BondPresenter bondPrefab;
+        [SerializeField] public Molecule molecule;
 
-
-        private void Start()
+        public void Init()
         {
+            this.ObserveEveryValueChanged(_ => molecule.OffsetPosition.Value)
+                .Subscribe(x => { transform.localPosition = x; }).AddTo(this);
+
             molecule.Atoms.ToList().ForEach(x =>
             {
-                var atom = Instantiate(atomPrefab, x.Position.Value, Quaternion.identity, transform);
-                atom.GetComponent<AtomPresenter>().Atom = x;
+                var atomPresenter = Instantiate(atomPrefab, x.Position.Value, Quaternion.identity, transform);
+                atomPresenter.model = x;
+                atomPresenter.GetComponent<MeshRenderer>().material = atomColorPalette.Dictionary[x.AtomicNumber];
+                if (x.AtomicNumber == AtomicNumber.H)
+                    atomPresenter.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                atomPresenter.Init();
             });
-            
+
             molecule.Bonds.ToList().ForEach(x =>
             {
                 var bond = Instantiate(bondPrefab, transform);
-                bond.GetComponent<BondPresenter>().Bond = x;
+                bond.model = x;
+                bond.BeginAtom = molecule.Atoms[x.BeginAtomIndex];
+                bond.EndAtom = molecule.Atoms[x.EndAtomIndex];
+                bond.Init();
             });
         }
     }
