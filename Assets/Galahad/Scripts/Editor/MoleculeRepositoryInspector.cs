@@ -1,12 +1,12 @@
 using System.Collections;
-using Galahad.MoleculeViewerContext.Domain.MoleculeAggregate;
+using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Galahad.Scripts.Editor
 {
-    [CustomEditor(typeof(MoleculeRepository))]
+    [CustomEditor(typeof(MoleculeRepositoryInspector))]
     public class MoleculeRepositoryInspector : UnityEditor.Editor
     {
         private static MoleculeRepository _moleculeRepository;

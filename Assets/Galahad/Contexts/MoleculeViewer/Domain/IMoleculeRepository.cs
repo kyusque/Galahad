@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Galahad.MoleculeViewerContext.Domain.MoleculeAggregate;
+using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 
 namespace Galahad.Contexts.MoleculeViewer.Domain
 {
