@@ -1,0 +1,260 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71e256f96397b445b8ae7919cfa33a9, type: 3}
+  m_Name: FmoTargetRepository
+  m_EditorClassIdentifier: 
+  FmoTarget:
+    fragments:
+    - fragmentId: 1
+      atoms:
+      - atomId: 1
+        atomicNumber: 7
+        position: {x: 2.742, y: 0.132, z: 5.642}
+        charge: 0
+      - atomId: 2
+        atomicNumber: 6
+        position: {x: 2.326, y: 0.709, z: 4.366}
+        charge: 0
+      - atomId: 5
+        atomicNumber: 6
+        position: {x: 2.752, y: 2.184, z: 4.228}
+        charge: 0
+      - atomId: 6
+        atomicNumber: 6
+        position: {x: 2.296, y: 2.743, z: 2.872}
+        charge: 0
+      - atomId: 7
+        atomicNumber: 6
+        position: {x: 2.212, y: 3.019, z: 5.377}
+        charge: 0
+      - atomId: 8
+        atomicNumber: 1
+        position: {x: 2.573, y: 0.791, z: 6.388}
+        charge: 0
+      - atomId: 9
+        atomicNumber: 1
+        position: {x: 3.736, y: -0.065, z: 5.585}
+        charge: 0
+      - atomId: 10
+        atomicNumber: 1
+        position: {x: 1.239, y: 0.667, z: 4.277}
+        charge: 0
+      - atomId: 11
+        atomicNumber: 1
+        position: {x: 3.843, y: 2.233, z: 4.264}
+        charge: 0
+      - atomId: 12
+        atomicNumber: 1
+        position: {x: 1.223, y: 2.597, z: 2.734}
+        charge: 0
+      - atomId: 13
+        atomicNumber: 1
+        position: {x: 2.841, y: 2.266, z: 2.058}
+        charge: 0
+      - atomId: 14
+        atomicNumber: 1
+        position: {x: 2.511, y: 3.812, z: 2.824}
+        charge: 0
+      - atomId: 15
+        atomicNumber: 1
+        position: {x: 1.125, y: 2.934, z: 5.429}
+        charge: 0
+      - atomId: 16
+        atomicNumber: 1
+        position: {x: 2.476, y: 4.067, z: 5.227}
+        charge: 0
+      - atomId: 17
+        atomicNumber: 1
+        position: {x: 2.646, y: 2.7, z: 6.325}
+        charge: 0
+    - fragmentId: 2
+      atoms:
+      - atomId: 3
+        atomicNumber: 6
+        position: {x: 2.933, y: -0.077, z: 3.215}
+        charge: 0
+      - atomId: 4
+        atomicNumber: 8
+        position: {x: 4.148, y: -0.295, z: 3.184}
+        charge: 0
+      - atomId: 18
+        atomicNumber: 7
+        position: {x: 2.084, y: -0.494, z: 2.278}
+        charge: 0
+      - atomId: 19
+        atomicNumber: 6
+        position: {x: 2.519, y: -1.155, z: 1.052}
+        charge: 0
+      - atomId: 22
+        atomicNumber: 6
+        position: {x: 2.094, y: -2.625, z: 1.049}
+        charge: 0
+      - atomId: 23
+        atomicNumber: 6
+        position: {x: 2.778, y: -3.435, z: 2.146}
+        charge: 0
+      - atomId: 24
+        atomicNumber: 6
+        position: {x: 2.173, y: -4.806, z: 2.321}
+        charge: 0
+      - atomId: 25
+        atomicNumber: 8
+        position: {x: 0.95, y: -4.969, z: 2.245}
+        charge: 0
+      - atomId: 26
+        atomicNumber: 7
+        position: {x: 3.018, y: -5.806, z: 2.55}
+        charge: 0
+      - atomId: 27
+        atomicNumber: 1
+        position: {x: 1.098, y: -0.295, z: 2.369}
+        charge: 0
+      - atomId: 28
+        atomicNumber: 1
+        position: {x: 3.606, y: -1.114, z: 0.967}
+        charge: 0
+      - atomId: 29
+        atomicNumber: 1
+        position: {x: 1.011, y: -2.666, z: 1.181}
+        charge: 0
+      - atomId: 30
+        atomicNumber: 1
+        position: {x: 2.337, y: -3.07, z: 0.083}
+        charge: 0
+      - atomId: 31
+        atomicNumber: 1
+        position: {x: 2.69, y: -2.927, z: 3.105}
+        charge: 0
+      - atomId: 32
+        atomicNumber: 1
+        position: {x: 3.839, y: -3.522, z: 1.908}
+        charge: 0
+      - atomId: 33
+        atomicNumber: 1
+        position: {x: 4.004, y: -5.638, z: 2.619}
+        charge: 0
+      - atomId: 34
+        atomicNumber: 1
+        position: {x: 2.604, y: -6.714, z: 2.669}
+        charge: 0
+    - fragmentId: 3
+      atoms:
+      - atomId: 20
+        atomicNumber: 6
+        position: {x: 1.919, y: -0.42, z: -0.141}
+        charge: 0
+      - atomId: 21
+        atomicNumber: 8
+        position: {x: 0.699, y: -0.239, z: -0.206}
+        charge: 0
+      - atomId: 35
+        atomicNumber: 7
+        position: {x: 2.779, y: 0.013, z: -1.062}
+        charge: 0
+      - atomId: 36
+        atomicNumber: 6
+        position: {x: 2.353, y: 0.679, z: -2.284}
+        charge: 0
+      - atomId: 39
+        atomicNumber: 6
+        position: {x: 2.743, y: 2.181, z: -2.31}
+        charge: 0
+      - atomId: 40
+        atomicNumber: 6
+        position: {x: 2.311, y: 2.812, z: -3.652}
+        charge: 0
+      - atomId: 41
+        atomicNumber: 6
+        position: {x: 2.142, y: 2.934, z: -1.116}
+        charge: 0
+      - atomId: 42
+        atomicNumber: 1
+        position: {x: 3.764, y: -0.185, z: -0.96}
+        charge: 0
+      - atomId: 43
+        atomicNumber: 1
+        position: {x: 1.271, y: 0.606, z: -2.396}
+        charge: 0
+      - atomId: 44
+        atomicNumber: 1
+        position: {x: 3.828, y: 2.266, z: -2.235}
+        charge: 0
+      - atomId: 45
+        atomicNumber: 1
+        position: {x: 2.871, y: 2.381, z: -4.482}
+        charge: 0
+      - atomId: 46
+        atomicNumber: 1
+        position: {x: 1.243, y: 2.662, z: -3.811}
+        charge: 0
+      - atomId: 47
+        atomicNumber: 1
+        position: {x: 2.518, y: 3.882, z: -3.632}
+        charge: 0
+      - atomId: 48
+        atomicNumber: 1
+        position: {x: 1.059, y: 2.811, z: -1.106}
+        charge: 0
+      - atomId: 49
+        atomicNumber: 1
+        position: {x: 2.558, y: 2.548, z: -0.189}
+        charge: 0
+      - atomId: 50
+        atomicNumber: 1
+        position: {x: 2.385, y: 3.994, z: -1.19}
+        charge: 0
+    - fragmentId: 4
+      atoms:
+      - atomId: 37
+        atomicNumber: 6
+        position: {x: 3.007, y: -0.025, z: -3.458}
+        charge: 0
+      - atomId: 38
+        atomicNumber: 8
+        position: {x: 4.232, y: -0.183, z: -3.488}
+        charge: 0
+      - atomId: 51
+        atomicNumber: 7
+        position: {x: 2.198, y: -0.455, z: -4.422}
+        charge: 0
+      - atomId: 52
+        atomicNumber: 6
+        position: {x: 2.735, y: -1.144, z: -5.585}
+        charge: 0
+      - atomId: 53
+        atomicNumber: 6
+        position: {x: 1.938, y: -0.824, z: -6.827}
+        charge: 0
+      - atomId: 54
+        atomicNumber: 8
+        position: {x: 0.85, y: -0.277, z: -6.711}
+        charge: 0
+      - atomId: 55
+        atomicNumber: 8
+        position: {x: 2.339, y: -1.084, z: -7.959}
+        charge: 0
+      - atomId: 56
+        atomicNumber: 1
+        position: {x: 1.21, y: -0.245, z: -4.405}
+        charge: 0
+      - atomId: 57
+        atomicNumber: 1
+        position: {x: 3.768, y: -0.848, z: -5.774}
+        charge: 0
+      - atomId: 58
+        atomicNumber: 1
+        position: {x: 2.713, y: -2.221, z: -5.425}
+        charge: 0
+      - atomId: 59
+        atomicNumber: 1
+        position: {x: 1.636, y: -0.754, z: -8.522}
+        charge: 0

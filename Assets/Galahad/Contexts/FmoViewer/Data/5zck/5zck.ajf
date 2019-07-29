@@ -1,0 +1,100 @@
+&CNTRL
+  Title='test'
+  Method='HF'
+  ReadGeom='5zck.pdb'
+  WriteGeom='5zck.cpf'
+  Gradient='NO'
+  Memory=1000
+  Charge=0
+/
+
+&FMOCNTRL
+  FMO='ON'
+  AutoFrag='ON'
+  FragSizeResidue=1
+  NP=1
+  ERRCHKSCF=3
+  Write_SCC='5zck.scc'
+  Write_dimer='YES'
+  Dimer_dir='5zck_dir'
+/
+
+&SCF
+/
+
+&BASIS
+  BasisSet='6-31G'
+/
+
+&OPTCNTRL
+/
+
+&SCZV
+/
+
+&MP2
+/
+
+&MP2DNS
+/
+
+&MP2GRD
+/
+
+&MP3
+/
+
+&LMP2
+/
+
+&DFT
+/
+
+&PIEDA
+  EnergyDecomposition='YES'
+/
+&BSSE
+/
+
+&FRAGPAIR
+/
+
+&SOLVATION
+/
+
+&PBEQ
+/
+
+&POP
+/
+
+&GRIDCNTRL
+ GRID='YES'
+ WriteMap='YES'
+ WriteEsp='YES'
+ WriteEfv='YES'
+ WriteMO='YES'
+ WriteMORegion='1-4'
+ 
+/
+
+&CAFI
+/
+
+&XYZ
+/
+
+&FRAGMENT
+/
+
+&MDCNTRL
+/
+
+&VEL
+/
+
+&NHC
+/
+
+&TYPEFRAG
+/
