@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Galahad.Contexts.MoleculeViewer.Domain;
-using Galahad.MoleculeViewerContext.Domain;
-using Galahad.MoleculeViewerContext.Domain.MoleculeAggregate;
+using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using UnityEngine;
 using Zenject;
 
 namespace Galahad.Scripts
 {
     [CreateAssetMenu]
-    public class MoleculeRepository : ScriptableObjectInstaller, IMoleculeRepository
+    public class MoleculeRepository : ScriptableObjectInstaller, IMoleculeRepository  
     {
         private List<Molecule> _runtimeMolecules;
         [SerializeField] private List<Molecule> molecules;

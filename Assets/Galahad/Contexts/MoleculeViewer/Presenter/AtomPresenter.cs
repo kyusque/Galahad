@@ -1,7 +1,7 @@
-using Galahad.MoleculeViewerContext.Domain.MoleculeAggregate;
-using TMPro;
+using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using UniRx;
 using UnityEngine;
+using TMPro;
 
 namespace Galahad.Contexts.MoleculeViewer.Presenter
 {
