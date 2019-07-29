@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Galahad.Contexts.MoleculeViewer.Domain.ValueObject;
 using UnityEngine;
 
-namespace Galahad.MoleculeViewerContext.Domain.MoleculeAggregate
+namespace Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate
 {
     [Serializable]
     public class Molecule : ISerializationCallbackReceiver

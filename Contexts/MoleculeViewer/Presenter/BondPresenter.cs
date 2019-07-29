@@ -1,4 +1,4 @@
-using Galahad.MoleculeViewerContext.Domain.MoleculeAggregate;
+using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using UniRx;
 using UnityEngine;
 

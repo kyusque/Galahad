@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Galahad.Contexts.MoleculeViewer.Domain;
-using Galahad.MoleculeViewerContext.Domain;
-using Galahad.MoleculeViewerContext.Domain.MoleculeAggregate;
+using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using Galahad.Scripts;
 using UniRx;
 using UnityEngine;
