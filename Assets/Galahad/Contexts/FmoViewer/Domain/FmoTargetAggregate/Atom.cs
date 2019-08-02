@@ -13,23 +13,23 @@ namespace Galahad.Contexts.FmoViewer.Domain.FmoTargetAggregate
         [SerializeField] private AtomicNumber atomicNumber;
         [SerializeField] private Vector3 position;
         [SerializeField] private int charge;
-        public Atom( AtomId atomId,AtomicNumber atomicNumber,Position position,Charge charge)
+        public Atom( AtomId atomId,AtomicNumber atomicNumber,Position position,FormalCharge formalCharge)
         {
-            this.Charge = charge;
+            this.FormalCharge = formalCharge;
             this.AtomId = atomId;
             this.Position = position;
             this.AtomicNumber = atomicNumber;
         }
         public Position Position { get; private set; }
         public AtomicNumber AtomicNumber { get; private set; }
-        public Charge Charge { get; private set; }
+        public FormalCharge FormalCharge { get; private set; }
         public AtomId AtomId { get; private set; }
         public void OnBeforeSerialize()
         {
             atomId = AtomId?.Value ?? 0;
             atomicNumber = AtomicNumber;
             position = Position?.Value ?? Vector3.zero;
-            charge = Charge?.Value ?? 0;
+            charge = FormalCharge?.Value ?? 0;
         }
 
         public void OnAfterDeserialize()
@@ -37,7 +37,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.FmoTargetAggregate
             AtomId=new AtomId(atomId);
             AtomicNumber = atomicNumber;
             Position=new Position(position);
-            Charge=new Charge(charge);
+            FormalCharge=new FormalCharge(charge);
         }
     }
 

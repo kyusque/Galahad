@@ -15,47 +15,47 @@ namespace Galahad.Contexts.FmoViewer.Domain
         public FmoTarget FmoTarget;
         public void readcpf(string cpf)
         {
-	        var _fragments=new List<Fragment>();
-				using (StreamReader file=new StreamReader(cpf))
-				{
-					var atomsf = new Dictionary<int, List<Atom>>();
+            var _fragments=new List<Fragment>();
+            using (StreamReader file=new StreamReader(cpf))
+            {
+                var atomsf = new Dictionary<int, List<Atom>>();
 //					var ifies = new Dictionary<int, List<IGldIfie>>();
 //					var ifie=new List<IGldIfie>();
-					var tagsf=new Dictionary<int,string>();
+                var tagsf=new Dictionary<int,string>();
 //					var bonds=new Dictionary<int,List<IGldBond>>();
-					var fragmentbond=new List<Fragment>();
-					string[] infolist;
-					file.ReadLine();
-				infolist = file.ReadLine().Split(new[] {" "}, System.StringSplitOptions.RemoveEmptyEntries);
-				int moleculenumber = int.Parse(infolist[0]);
-				int fragmentnumber =int.Parse(infolist[1]);
+                var fragmentbond=new List<Fragment>();
+                string[] infolist;
+                file.ReadLine();
+                infolist = file.ReadLine().Split(new[] {" "}, System.StringSplitOptions.RemoveEmptyEntries);
+                int moleculenumber = int.Parse(infolist[0]);
+                int fragmentnumber =int.Parse(infolist[1]);
 				
-				for (int i = 0; i < moleculenumber; i++)
-				{
-					infolist = file.ReadLine().Split(new[] {" "}, System.StringSplitOptions.RemoveEmptyEntries);
-					if (!atomsf.Keys.Contains(int.Parse(infolist[5])))
-					{
-						atomsf.Add(int.Parse(infolist[5]),new List<Atom>());
-						tagsf.Add(int.Parse(infolist[5]),infolist[3]);
-					}
-					atomsf[int.Parse(infolist[5])].Add(new Atom(new AtomId( int.Parse(infolist[0])),
-						(AtomicNumber)Enum.Parse(typeof(AtomicNumber),infolist[1]),
-						new Position( new Vector3(float.Parse(infolist[6]),float.Parse(infolist[7]),float.Parse(infolist[8]))) ,new Charge(0)));
-				}
+                for (int i = 0; i < moleculenumber; i++)
+                {
+                    infolist = file.ReadLine().Split(new[] {" "}, System.StringSplitOptions.RemoveEmptyEntries);
+                    if (!atomsf.Keys.Contains(int.Parse(infolist[5])))
+                    {
+                        atomsf.Add(int.Parse(infolist[5]),new List<Atom>());
+                        tagsf.Add(int.Parse(infolist[5]),infolist[3]);
+                    }
+                    atomsf[int.Parse(infolist[5])].Add(new Atom(new AtomId( int.Parse(infolist[0])),
+                        (AtomicNumber)Enum.Parse(typeof(AtomicNumber),infolist[1]),
+                        new Position( new Vector3(float.Parse(infolist[6]),float.Parse(infolist[7]),float.Parse(infolist[8]))) ,new FormalCharge(0)));
+                }
 				
-				for (int i = 0; i < fragmentnumber / 16+1; i++)
-				{
-					file.ReadLine();
-				}
+                for (int i = 0; i < fragmentnumber / 16+1; i++)
+                {
+                    file.ReadLine();
+                }
 
-				for (int i = 0; i < fragmentnumber/16+1; i++)
-				{
-					infolist = FileSeparationToStrings(file);
-					for (int j = 0; j < infolist.Length; j++)
-					{
+                for (int i = 0; i < fragmentnumber/16+1; i++)
+                {
+                    infolist = FileSeparationToStrings(file);
+                    for (int j = 0; j < infolist.Length; j++)
+                    {
 //						fragmentbond.Add(new Fragment( j+1,int.Parse(infolist[j])));
-					}
-				}
+                    }
+                }
 //
 //				foreach (var fragment in fragmentbond)
 //				{
@@ -75,36 +75,36 @@ namespace Galahad.Contexts.FmoViewer.Domain
 //					}
 //				}
 
-				for (int i = 0; i < Conbination2(fragmentnumber); i++)
-				{
-					file.ReadLine();
-				}
+                for (int i = 0; i < Conbination2(fragmentnumber); i++)
+                {
+                    file.ReadLine();
+                }
 
-				for (int i = 0; i < fragmentnumber; i++)
-				{
-					file.ReadLine();
-				}
+                for (int i = 0; i < fragmentnumber; i++)
+                {
+                    file.ReadLine();
+                }
 
-				for (int i = 0; i < 7; i++)
-				{
-					file.ReadLine();
-				}
+                for (int i = 0; i < 7; i++)
+                {
+                    file.ReadLine();
+                }
 
-				for (int i = 0; i < fragmentnumber; i++)
-				{
-					file.ReadLine();
-				}
+                for (int i = 0; i < fragmentnumber; i++)
+                {
+                    file.ReadLine();
+                }
 
-				for (int i = 0; i <Conbination2(fragmentnumber); i++)
-				{
-					infolist =file.ReadLine().Split(new[] {" "}, System.StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i <Conbination2(fragmentnumber); i++)
+                {
+                    infolist =file.ReadLine().Split(new[] {" "}, System.StringSplitOptions.RemoveEmptyEntries);
 //					ifie.Add(new GldIfie((float.Parse(infolist[0])+float.Parse(infolist[1])+float.Parse(infolist[2]))));
-				}
-				for (int i = 1; i < fragmentnumber+1; i++)//FragIfieListの第二引数はfragment番号なので１からスタートが望ましい
-				{
+                }
+                for (int i = 1; i < fragmentnumber+1; i++)//FragIfieListの第二引数はfragment番号なので１からスタートが望ましい
+                {
 //					var ifieifie=new GldIfie();
 //					ifies.Add(i,((IGldIfie)ifieifie).FragIfiesList(fragmentnumber,i,ifie));
-				}
+                }
 //
 //				foreach (var key in atomsf.Keys)
 //				{
@@ -126,23 +126,23 @@ namespace Galahad.Contexts.FmoViewer.Domain
 //						}
 //					}
 //				}
-				foreach (int key in atomsf.Keys)
-				{
-					_fragments.Add(new Fragment(new FragmentId(key),new Atoms(atomsf[key]) )); 
-				}
+                foreach (int key in atomsf.Keys)
+                {
+                    _fragments.Add(new Fragment(new FragmentId(key),new Atoms(atomsf[key]) )); 
+                }
 				
-				}
+            }
 			
 			
-			FmoTarget=new FmoTarget(new Fragments(_fragments));
+            FmoTarget=new FmoTarget(new Fragments(_fragments));
         }
         string[] FileSeparationToStrings(StreamReader file)
         {
-	        return  file.ReadLine().Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+            return  file.ReadLine().Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
         }
         int Conbination2(int n)
         {
-	        return n * (n - 1) / 2;
+            return n * (n - 1) / 2;
         }
         public override void InstallBindings()
         {
