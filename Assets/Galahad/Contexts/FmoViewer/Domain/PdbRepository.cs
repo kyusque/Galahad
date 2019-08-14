@@ -39,21 +39,6 @@ public class PdbRepository : ScriptableObjectInstaller<PdbRepository>
         }
     }
 
-    public void AutCut()
-    {
-        
-    }
-
-    public void WriteAjf(string filename)
-    {
-         var encoding=Encoding.UTF8;
-//         using (var outfile=new StreamWriter(filename,true,encoding)
-//         {
-//             NewLine = filename
-//         }
-    }
-    
-
     public void save(Pdb pdb,string templeteajf)
     {
 //        System.Diagnostics.Process.Start(@"C:","/select,");
@@ -70,16 +55,16 @@ public class PdbRepository : ScriptableObjectInstaller<PdbRepository>
         }
     }
 
-    public void writer(string templeteajf,string path,string basename,)
+    public void writer(string templeteajf,string path,string basename)
     {
         using (var writer=new StreamWriter(path))
         {
             using (var reader=new StreamReader(templeteajf))
             {
-                while (reader.ReadLine())
-                {
-                    writer.NewLine=reader
-                }
+//                while (reader.ReadLine())
+//                {
+//                    writer.NewLine=reader
+//                }
             }
         }
     }

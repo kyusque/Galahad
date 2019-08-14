@@ -6,6 +6,12 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
         {
             Value = id;
         }
+
+        public FragmentId()
+        {
+            
+        }
+
         public int Value { get; }
     }
 }

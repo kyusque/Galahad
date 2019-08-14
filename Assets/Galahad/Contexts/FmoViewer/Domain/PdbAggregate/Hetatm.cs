@@ -120,6 +120,16 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             return new Hetatms(_hetatms);
         }
 
+        public bool Contains()
+        {
+            return _hetatms.Count > 0;
+        }
+
+        public int Count()
+        {
+            return _hetatms?.Count??0;
+        }
+
         public Hetatms AddHetatms(string line)
         {
             if (line.Length>79)
@@ -162,6 +172,31 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             }
 
             return new Hetatms(_hetatms);
+        }
+
+        public Hetatms Remove(Hetatm hetatm)
+        {
+            _hetatms.Remove(hetatm);
+            return new Hetatms(_hetatms);
+        }
+
+        public Hetatms Clear()
+        {
+            _hetatms.Clear();
+            return new Hetatms(_hetatms);
+        }
+
+        public Hetatms MoveTo(Hetatms hetatms)
+        {
+            if (!hetatms.Contains()) return this;
+            foreach (var hetatm in hetatms.ToList())
+            {
+                _hetatms.Add(hetatm);
+            }
+
+            hetatms.Clear();
+            return new Hetatms(_hetatms);
+
         }
     }
 }

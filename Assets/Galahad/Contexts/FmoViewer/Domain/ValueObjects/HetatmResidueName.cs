@@ -7,6 +7,6 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
             Value = hetatmResidueName;
         }
 
-        public string Value;
+        public string Value { get; }
     }
 }

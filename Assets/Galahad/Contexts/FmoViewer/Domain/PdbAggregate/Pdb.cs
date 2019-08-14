@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
 using UnityEngine;
 
 namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
@@ -22,7 +24,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public Hetatms Hetatms{get; private set;}
 
-        public int TotalCharge()
+        public  int TotalCharge()
         {
             var totalCharge = 0;
             foreach (var atom in atoms)
@@ -35,6 +37,17 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
                 totalCharge += hetatm.FormalCharge.Value;
             }
             return totalCharge;
+        }
+
+        public int FirstFragmentId()
+        {
+            return Atoms.ToList().First().ResidueSequencsNumber.Value;
+        }
+
+        public int DefaultFragmentMount()
+        {
+            return Atoms.ToList().Last().ResidueSequencsNumber.Value - Atoms.ToList().First().ResidueSequencsNumber.Value 
+                   + Hetatms.ToList().Last().ResidueSequencsNumber.Value-Hetatms.ToList().First().ResidueSequencsNumber.Value+2;
         }
 
         public void OnBeforeSerialize()

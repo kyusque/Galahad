@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
 using UnityEngine;
-
 namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 {
     [Serializable]
@@ -21,6 +20,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         [SerializeField] private float tempratureFactor;
         [SerializeField] private ElementSymbol elementSymbol;
         [SerializeField] private int formalCharge;
+        
+        
         public Atom(string atomSerialNumber, string atomName, string alternateLocationIndicator, string residueName,
             string chainId,string residueSequenceNumber ,string codeForInsertionOfResidues, string x, string y, string z, string occupancy, string temperatureFactor,
             string elementSymbol, string formalCharge)
@@ -39,6 +40,36 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             FormalCharge = !int.TryParse(formalCharge.Substring(1,1)+formalCharge.Substring(0,1),out var foResult) ? new FormalCharge(0) : new FormalCharge(foResult);
            
         }
+
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || this.GetType() != obj.GetType()) 
+            {
+                return false;
+            }
+            else
+            {
+                var atom = (Atom) obj;
+                return (AtomName == atom.AtomName) &&
+                       (AtomSerialNumber.Value == atom.AtomSerialNumber.Value) &&
+                       (AlternateLocationIndicator == atom.AlternateLocationIndicator) &&
+                       (ResidueName == atom.ResidueName) &&
+                       (ChainId == atom.ChainId) &&
+                       (ResidueSequencsNumber.Value == atom.ResidueSequencsNumber.Value) &&
+                       (CodeForInsertionOfResidues.Value == atom.CodeForInsertionOfResidues.Value) &&
+                       (Position.Value == atom.Position.Value) &&
+                       (Math.Abs(Occupancy.Value - atom.Occupancy.Value) < 0.1f) &&
+                       (Math.Abs(TemperatureFactor.Value - atom.TemperatureFactor.Value) < 0.1) &&
+                       (ElementSymbol == atom.ElementSymbol) &&
+                       (FormalCharge.Value == atom.FormalCharge.Value);
+            }
+        }
+
+        public override string ToString()
+        {
+            return AtomName.ToString();
+        }
+
         public AtomSerialNumber AtomSerialNumber { get; private set; }
         public AtomName AtomName { get; set; }
         public AlternateLocationIndicator AlternateLocationIndicator { get; set; }
@@ -88,6 +119,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     public class Atoms
     {
         private readonly List<Atom> _atoms;
+        
         public Atoms(List<Atom> atoms)
         {
             _atoms = atoms;
@@ -97,18 +129,93 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         {
             
         }
+        public Atom this[int index] => _atoms[index];
 
         public Atom this[AtomSerialNumber index] => _atoms.FirstOrDefault(x => x.AtomSerialNumber.Value == index.Value);
+
+        public Atom this[ResidueSequencsNumber residueSequencsNumber] =>
+            _atoms.Find(x => x.ResidueSequencsNumber.Value == residueSequencsNumber.Value);
 
         public List<Atom> ToList()
         {
             return _atoms;
         }
 
+
         public Atoms Add(Atom atom)
         {
             _atoms.Add(atom);
             return new Atoms(_atoms);
+        }
+
+        public Atoms Get(AtomName atomName)
+        {
+            return new Atoms(new List<Atom>(_atoms.Where(x => x.AtomName == atomName))) ;
+        }
+
+        public int Count()
+        {
+            return _atoms?.Count??0;
+        }
+
+        public Atoms GetEndOxAtoms()
+        {
+            return new Atoms( new List<Atom>(_atoms.Where(x => x.AtomName == AtomName.OX))); 
+        }
+
+        public bool Contains(Atom atom)
+        {
+            return _atoms.Contains(atom);
+        }
+
+        public bool Contains()
+        {
+            return _atoms.Count != 0;
+        }
+
+        public bool Exists(ResidueSequencsNumber residueSequencsNumber)
+        {
+            return _atoms.Exists(x => x.ResidueSequencsNumber.Value == residueSequencsNumber.Value);
+        }
+
+        public bool Exists(AtomName atomName)
+        {
+            return _atoms.Exists(x => x.AtomName == atomName);
+        }
+
+        public bool Exists(ResidueName residueName)
+        {
+            return _atoms.Exists(x => x.AtomName == AtomName.CA && x.ResidueName == residueName);
+        }
+        
+
+        public bool Exists(Atom atom)
+        {
+            return _atoms.Contains(atom);
+        }
+
+        public Atoms Remove(Atom atom)
+        {
+            _atoms.Remove(atom);
+            return new Atoms( _atoms);
+        }
+
+        public Atoms Clear()
+        {
+            _atoms.Clear();
+            return new Atoms(_atoms);
+        }
+
+        public Atoms MoveTo(Atoms atoms)
+        {
+            if (!atoms.Contains()) return this;
+            foreach (var atom in atoms.ToList())
+            {
+                _atoms.Add(atom);
+            }
+            atoms.Clear();
+            return new Atoms(_atoms);
+
         }
 
         public Atoms AddAtoms(string pdbLine)

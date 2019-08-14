@@ -8,6 +8,8 @@ public class PdbRepositoryEditor:Editor
     public PdbRepository _pdbRepository;
     [SerializeField]private string pdb;
     [SerializeField] private Object _pdb;
+    
+    
     private void OnEnable()
     {
         _pdbRepository= (PdbRepository) target;
@@ -29,11 +31,14 @@ public class PdbRepositoryEditor:Editor
 
         if (GUILayout.Button("cut"))
         {
-            
+            _pdbRepository.Pdb.Atoms.ToList().ForEach(atom =>
+            {
+                
+            });
         }
         if (GUILayout.Button("test"))
         {
-            _pdbRepository.save();
+//            _pdbRepository.save();
         }
     }
 }
