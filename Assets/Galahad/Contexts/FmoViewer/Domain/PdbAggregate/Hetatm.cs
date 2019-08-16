@@ -198,5 +198,16 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             return new Hetatms(_hetatms);
 
         }
+
+        public int TotalCharge()
+        {
+            if (_hetatms.Count==0)
+            {
+                return 0;
+            }
+            var charge = 0;
+            _hetatms.ForEach(x => { charge += x.FormalCharge.Value; });
+            return charge;
+        }
     }
 }

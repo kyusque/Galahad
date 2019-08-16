@@ -15,6 +15,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             FragmentBonds = fragmentBonds;
             FragmentCuts = fragmentCuts;
         }
+        public FragmentCutInformation()
         public FragmentCutInformation():this(new FragmentCuts(),new FragmentBonds() ){}
         public FragmentCutInformation(FragmentCuts fragmentCuts):this(){}
 
@@ -31,5 +32,6 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             FragmentCuts=new FragmentCuts(fragmentCuts);
             FragmentBonds=new FragmentBonds(fragmentBonds);
         }
+        
     }
 }

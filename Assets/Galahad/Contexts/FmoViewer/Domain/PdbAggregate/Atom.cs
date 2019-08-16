@@ -115,11 +115,11 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             FormalCharge = new FormalCharge(formalCharge);
         }
     }
-
     public class Atoms
     {
         private readonly List<Atom> _atoms;
-        
+        [SerializeField] private int totalCharge;
+
         public Atoms(List<Atom> atoms)
         {
             _atoms = atoms;
@@ -129,6 +129,9 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         {
             
         }
+        
+
+        
         public Atom this[int index] => _atoms[index];
 
         public Atom this[AtomSerialNumber index] => _atoms.FirstOrDefault(x => x.AtomSerialNumber.Value == index.Value);
@@ -215,7 +218,17 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             }
             atoms.Clear();
             return new Atoms(_atoms);
+        }
 
+        public int TotalCharge()
+        {
+            if (_atoms.Count==0)
+            {
+                return 0;
+            }
+            var charge = 0;
+            _atoms.ForEach(x => { charge += x.FormalCharge.Value; });
+            return charge;
         }
 
         public Atoms AddAtoms(string pdbLine)
@@ -258,5 +271,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             }
             return new Atoms(_atoms);
         }
+        
+
     }
 }

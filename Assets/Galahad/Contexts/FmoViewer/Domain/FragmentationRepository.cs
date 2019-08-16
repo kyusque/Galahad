@@ -16,7 +16,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
         public PdbRepository PdbRepository;
         public FragmentCutInformation FragmentCutInformation;
 
-        public void WriteAjf(string readpath,string writepath,string savename)
+        public void WriteAjf(string readpath,string writepath,string saveName,string basisSet)
         {
             using (var reader=new StreamReader(readpath))
             {
@@ -27,14 +27,158 @@ namespace Galahad.Contexts.FmoViewer.Domain
                     {
                         if (line.Contains("{{{BASENAME}}}"))
                         {
-                             var linesplit= line.Split( string[] "{{{BASENAME}}}",StringSplitOptions.None)};
+                            writer.WriteLine(
+                                line.Substring(0, line.IndexOf("{{{BASENAME}}}") - 1) + saveName +
+                                line.Substring(line.LastIndexOf("{{{BASENAME}}}") + 1),
+                                line.Length - line.LastIndexOf("{{{BASENAME}}}"));
                         }
-                        writer.Write();
+                        else if (line.Contains("{{{TOTAL_CHARGE}}}"))
+                        {
+                            writer.WriteLine(
+                                line.Substring(0, line.IndexOf("{{{TOTAL_CHARGE}}}") - 1) +
+                                FragmentCutInformation.FragmentCuts.TOTAL_CHARGE() +
+                                line.Substring(line.LastIndexOf("{{{TOTAL_CHARGE}}}") + 1),
+                                line.Length - line.LastIndexOf("{{{TOTAL_CHARGE}}}"));
+                        }
+                        else if (line.Contains("{{{BASIS_SET}}}"))
+                        {
+                            writer.WriteLine(
+                                line.Substring(0, line.IndexOf("{{{BASIS_SET}}}") - 1) +
+                                basisSet +
+                                line.Substring(line.LastIndexOf("{{{BASIS_SET}}}") + 1),
+                                line.Length - line.LastIndexOf("{{{BASIS_SET}}}"));
+                        }
+                        else if (line.Contains("{{{NUM_FRAGS}}}"))
+                        {
+                            writer.WriteLine(
+                                line.Substring(0, line.IndexOf("{{{NUM_FRAGS}}}") - 1) +
+                                basisSet +
+                                line.Substring(line.LastIndexOf("{{{NUM_FRAGS}}}") + 1),
+                                line.Length - line.LastIndexOf("{{{NUM_FRAGS}}}"));
+                        }
+                        else if (line.Contains("{{{ABINITMP_FRAGMENT}}}"))
+                        {
+                            writer.WriteLine("&FRAGMENT");
+                            writer.Write(WriteFragment());
+                        }
+                        else
+                        {
+                            writer.WriteLine(line);
+                        }
                     }
                 }
             }
-                
         }
+
+        private string WriteFragment()
+        {
+            var frg = "";
+            var write = "";
+            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            {
+                if (fragmentCut.Atoms.Contains())
+                {
+                    if (frg.Length>80)
+                    {
+                        write += Environment.NewLine + frg;
+                        frg = "";
+                    }
+                    frg += $"{fragmentCut.Atoms.Count().ToString(),8}";
+                }
+                else if (fragmentCut.Hetatms.Contains())
+                {
+                    if (frg.Length > 80)
+                    {
+                        write += Environment.NewLine + frg;
+                        frg = "";
+                    }
+                    frg += $"{fragmentCut.Hetatms.Count().ToString(),8}";
+                }
+            }
+            write += Environment.NewLine + frg;
+            frg = "";
+            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            {
+                if (fragmentCut.Atoms.Contains())
+                {
+                    if (frg.Length>79)
+                    {
+                        write += Environment.NewLine + frg;
+                        frg = "";
+                    }
+                    frg += $"{fragmentCut.Atoms.TotalCharge(),8}";
+                }
+                else if(fragmentCut.Hetatms.Contains())
+                {
+                    if (frg.Length>79)
+                    {
+                        write += Environment.NewLine + frg;
+                        frg = "";
+                    }
+                    frg += $"{fragmentCut.Hetatms.TotalCharge(),8}";
+                }
+            }
+            write += Environment.NewLine + frg;
+            frg = "";
+            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            {
+                if (frg.Length>79)
+                {
+                    write += Environment.NewLine + frg;
+                    frg = "";
+                }
+                if (fragmentCut.Atoms.Contains())
+                {
+                    frg += $"{fragmentCut.Atoms.TotalCharge(),8}";
+                    
+                }
+                else if (fragmentCut.Hetatms.Contains())
+                {
+                    frg += $"{fragmentCut.Hetatms.TotalCharge(),8}";
+                }
+            }
+            write += Environment.NewLine + frg;
+            frg = "";
+            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            {
+                if (fragmentCut.Atoms.Contains())
+                {
+                    foreach (var atom in fragmentCut.Atoms.ToList())
+                    {
+                        if (frg.Length>79)
+                        {
+                            write += Environment.NewLine + frg;
+                            frg = "";
+                        }
+                        frg += $"{atom.AtomSerialNumber.Value,8}";
+                    }
+                    write += Environment.NewLine + frg;
+                    frg = "";
+                }
+                else
+                {
+                    foreach (var hetatm in fragmentCut.Hetatms.ToList())
+                    {
+                        if (frg.Length>79)
+                        {
+                            write += Environment.NewLine + frg;
+                            frg = "";
+                        }
+                        frg += $"{hetatm.AtomSerialNumber,8}";
+                    }
+                }
+                write += Environment.NewLine + frg;
+                frg = "";
+            }
+            foreach (var fragmentBond in FragmentCutInformation.FragmentBonds.ToList())
+            {
+                frg += $"{fragmentBond.CA.AtomSerialNumber,8}" + $"{fragmentBond.CO.AtomSerialNumber,8}";
+                write += Environment.NewLine + frg;
+                frg = "";
+            }
+            return write;
+        }
+        
         public void AutoCut(Pdb pdb)
         {
             FragmentCutInformation = null;

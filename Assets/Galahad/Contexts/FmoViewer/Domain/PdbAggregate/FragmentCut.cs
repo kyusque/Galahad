@@ -160,5 +160,17 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         {
             return _fragmentCuts.Count;
         }
+
+        public string TOTAL_CHARGE()
+        {
+            var total = 0;
+            _fragmentCuts.ForEach(x =>
+            {
+                total += x.Atoms.TotalCharge();
+                total += x.Hetatms.TotalCharge();
+            });
+            return total.ToString();
+        }
+        
     }
 }
