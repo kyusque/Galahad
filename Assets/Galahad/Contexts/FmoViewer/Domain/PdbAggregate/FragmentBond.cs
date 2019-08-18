@@ -9,54 +9,62 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     public class FragmentBond:ISerializationCallbackReceiver
     {
         private readonly FragmentBond _fragmentBond;
-        [SerializeField] private int fragmentId;
+        [SerializeField] private int fragmentIdCa;
+        [SerializeField] private int fragmentIdCo;
         [SerializeField] private Atom ca;
         [SerializeField] private Atom co;
-        public FragmentBond(FragmentId beginfragmentId)
+        public FragmentBond(){}
+        public FragmentBond(FragmentId beginfragmentIdCa):this()
         {
-            FragmentId = beginfragmentId;
+            FragmentIdCa = beginfragmentIdCa;
         }
 
-        public FragmentBond(FragmentId fragmentId, Atom ca) : this(fragmentId)
+        public FragmentBond(FragmentId fragmentIdCa, Atom ca) : this(fragmentIdCa)
         {
             CA = ca;
         }
-        public FragmentBond(FragmentId fragmentId,Atom ca, Atom co):this(fragmentId,ca)
+
+        public FragmentBond(FragmentId fragmentIdCa, Atom ca, FragmentId fragmentIdCo, Atom co) : this(fragmentIdCa, ca)
         {
+            FragmentIdCo = fragmentIdCo;
             CO = co;
         }
-        public FragmentBond(){}
-        public FragmentId FragmentId { get; private set; }
+
+        public FragmentId FragmentIdCa { get; private set; }
+        public FragmentId FragmentIdCo { get; private set; }
         public Atom CA { get; set; } //give
         public Atom CO { get; set; } //get
         public FragmentBond AddGiveAtom(Atom ca)
         {
             CA = ca;
-            return new FragmentBond(FragmentId,CA);
+            return new FragmentBond(FragmentIdCa,CA);
         }
         public FragmentBond AddGetAtom(Atom co)
         {
             CO = co;
-            return new FragmentBond(FragmentId,CA,CO);
+            return new FragmentBond(FragmentIdCa,CA,FragmentIdCo,CO);
         }
 
         public FragmentBond AddAtomBoth(Atom ca, Atom co)
         {
             CA = ca;
             CO = co;
-            return  new FragmentBond(FragmentId,CA,CO);;
+            return new FragmentBond(FragmentIdCa, CA, FragmentIdCo, CO);
+            
         }
 
         public void OnBeforeSerialize()
         {
-            fragmentId = FragmentId?.Value??0;
+            fragmentIdCa = FragmentIdCa?.Value??-1;
+            fragmentIdCo = FragmentIdCo?.Value ?? -1;
             ca = CA;
             co = CO;
         }
 
         public void OnAfterDeserialize()
         {
-            FragmentId=new FragmentId(fragmentId);
+            FragmentIdCa=new FragmentId(fragmentIdCa);
+            FragmentIdCo=new FragmentId(fragmentIdCo);
             CA=ca;
             CO = co;
         }
@@ -81,13 +89,21 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             return _fragmentBond;
         }
 
-        public FragmentBond this[FragmentId fragmentId] => _fragmentBond.Find(x => x.FragmentId.Value == fragmentId.Value);
+        public FragmentBond this[FragmentId fragmentId] => _fragmentBond.Find(x => x.FragmentIdCa.Value == fragmentId.Value);
 
         public FragmentBonds Add(FragmentId fragmentId)
         {
-            if (_fragmentBond.Exists(x => x.FragmentId == fragmentId)) return new FragmentBonds(_fragmentBond);
+            if (_fragmentBond.Exists(x => x.FragmentIdCa == fragmentId)) return new FragmentBonds(_fragmentBond);
             _fragmentBond.Add(new FragmentBond(fragmentId));
             return new FragmentBonds(_fragmentBond);
+        }
+
+
+        public FragmentBonds AddCa(Atom atom,FragmentId fragmentId)
+        {
+            Add(fragmentId);
+            this[fragmentId].AddGiveAtom(atom);
+            return this;
         }
 
         

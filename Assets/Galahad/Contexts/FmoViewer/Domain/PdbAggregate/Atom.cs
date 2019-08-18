@@ -161,6 +161,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             return _atoms?.Count??0;
         }
 
+        public int IndexOf(Atom atom) => _atoms.IndexOf(atom);
+
         public Atoms GetEndOxAtoms()
         {
             return new Atoms( new List<Atom>(_atoms.Where(x => x.AtomName == AtomName.OX))); 

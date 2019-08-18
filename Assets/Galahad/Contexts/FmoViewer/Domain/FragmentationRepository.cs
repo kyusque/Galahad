@@ -15,6 +15,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
     {
         public PdbRepository PdbRepository;
         public FragmentCutInformation FragmentCutInformation;
+        public Fragment Fragment;
 
         public void WriteAjf(string readpath,string writepath,string saveName,string basisSet)
         {
@@ -514,6 +515,91 @@ namespace Galahad.Contexts.FmoViewer.Domain
 //                }
             }
             
+        }
+
+        public void NewAutoResidueCut(Pdb pdb)
+        {
+            Fragment = null;
+            Debug.Log("start");
+            var fragmentCuts = new FragmentCuts();
+            var fragmentAtoms=new FragmentAtoms();
+            var fragmentHetatms = new FragmentHetatms();
+            var fragmentBonds=new FragmentBonds();
+            var endAtoms = pdb.Atoms.GetEndOxAtoms();
+            for (var i=0;i< pdb.DefaultFragmentMount();i++)
+            {
+                fragmentCuts.Add(new FragmentCut(new FragmentId(i + 1), new Atoms(),new Hetatms(), new ResidueSequencsNumber(pdb.FirstFragmentId()+i)));
+                fragmentBonds.Add(new FragmentId(i + 1));
+            }
+            Fragment=new Fragment(fragmentAtoms,fragmentHetatms,fragmentBonds);
+            foreach (AtomName value in Enum.GetValues(typeof(AtomName)))
+            {
+                switch (value)
+                {
+                    case AtomName.CA:
+                        var ca = pdb.Atoms.Get(value);
+                        foreach (var atom in ca.ToList())
+                        {
+                            if (endAtoms.Exists(atom.ResidueSequencsNumber))
+                            {
+                                Fragment.FragmentAtoms[atom.ResidueSequencsNumber].Add(atom);
+                            }
+                            else
+                            {
+                                Fragment.FragmentAtoms.AddCa(ca.IndexOf(atom),atom);
+                                Fragment.FragmentBonds[new FragmentId( ca.IndexOf(atom))].AddGiveAtom(atom);
+                            }
+                        }
+                        break;
+                    case AtomName.C:
+                        foreach (var atom in pdb.Atoms.Get(value).ToList())
+                        {
+                            if (endAtoms.Exists(atom.ResidueSequencsNumber))
+                            {
+                                Fragment.FragmentAtoms[new ResidueSequencsNumber(atom.ResidueSequencsNumber.Value-1)].Add(atom);
+                            }
+                            else
+                            {
+                                Fragment.FragmentAtoms[atom.ResidueSequencsNumber].Add(atom);
+                                Fragment.FragmentBonds[
+                                        new FragmentId(fragmentCuts[atom.ResidueSequencsNumber].FragmentId.Value )]
+                                    .AddGetAtom(atom);
+                            };
+                        }
+                        break;
+                    case AtomName.O:
+                        foreach (var atom in pdb.Atoms.Get(value).ToList())
+                        {
+                            if (endAtoms.Exists(atom.ResidueSequencsNumber))
+                            {
+                                Fragment.FragmentAtoms[new ResidueSequencsNumber(atom.ResidueSequencsNumber.Value-1)].Add(atom);
+                            }
+                            else
+                            {
+                                Fragment.FragmentAtoms[atom.ResidueSequencsNumber].Add(atom);
+                            };
+                        }
+                        break;
+                    default:
+                        if (pdb.Atoms.Exists(value))
+                        {
+                            foreach (var atom in pdb.Atoms.Get(value).ToList())
+                            {
+                                Fragment.FragmentAtoms[atom.ResidueSequencsNumber].Add(atom);
+                            }
+                        }
+                        break;
+                }
+            }
+
+            foreach (var hetatm in pdb.Hetatms.ToList())
+            {
+                if (!Fragment.FragmentHetatms.Exists(hetatm.ResidueSequencsNumber))
+                {
+                    Fragment.FragmentHetatms.Add(hetatm.ResidueSequencsNumber);
+                }   
+                Fragment.FragmentHetatms[hetatm.ResidueSequencsNumber].Add(hetatm);
+            }
         }
 
         public void Cut(Atoms atoms, Atom ca,Atom co)
