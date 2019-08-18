@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     [Serializable]
     public class FragmentBond:ISerializationCallbackReceiver
     {
-        private readonly FragmentBond _fragmentBond;
         [SerializeField] private int fragmentIdCa;
         [SerializeField] private int fragmentIdCo;
         [SerializeField] private Atom ca;
@@ -42,6 +42,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public FragmentBond AddGetAtom(Atom co)
         {
             CO = co;
+            FragmentIdCo=new FragmentId(FragmentIdCa.Value+1);
             return new FragmentBond(FragmentIdCa,CA,FragmentIdCo,CO);
         }
 
@@ -79,10 +80,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             _fragmentBond = fragmentBonds;
         }
 
-        public FragmentBonds() : this(new List<FragmentBond>())
-        {
-            
-        }
+        public FragmentBonds() : this(new List<FragmentBond>()){}
 
         public List<FragmentBond> ToList()
         {
@@ -104,6 +102,18 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             Add(fragmentId);
             this[fragmentId].AddGiveAtom(atom);
             return this;
+        }
+        public FragmentBonds AddNewCa(FragmentId fragmentId,Atom ca)
+        {
+            _fragmentBond.Add(new FragmentBond(fragmentId,ca));
+            return new FragmentBonds(_fragmentBond);
+        }
+
+        public FragmentBonds AddCo(Atom co)
+        {
+            _fragmentBond.FirstOrDefault(x => x.CA.ResidueSequencsNumber.Value == co.ResidueSequencsNumber.Value)
+                .AddGetAtom(co);
+            return new FragmentBonds(_fragmentBond);
         }
 
         

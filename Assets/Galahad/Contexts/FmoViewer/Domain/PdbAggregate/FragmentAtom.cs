@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 {
+    [Serializable]
     public class FragmentAtom:ISerializationCallbackReceiver
     {
         [SerializeField] private int fragmentId;
@@ -31,6 +33,12 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms);
         }
 
+        public FragmentAtom Remove(Atom atom)
+        {
+            return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms.Remove(atom));
+        }
+        
+
 
         public void OnBeforeSerialize()
         {
@@ -50,29 +58,60 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     public class FragmentAtoms
     {
         private List<FragmentAtom> _fragmentAtoms;
-        public FragmentAtoms(){}
 
         public FragmentAtoms(List<FragmentAtom> fragmentAtom)
         {
             _fragmentAtoms = fragmentAtom;
         }
+        public FragmentAtoms():this(new List<FragmentAtom>()){}
 
         public FragmentAtom this[ResidueSequencsNumber residueSequencsNumber] =>
             _fragmentAtoms.FirstOrDefault(x => x.ResidueSequencsNumber.Value == residueSequencsNumber.Value);
 
+        public FragmentAtom this[FragmentId fragmentId] =>
+            _fragmentAtoms.FirstOrDefault(x => x.FragmentId.Value == fragmentId.Value);
+
         public List<FragmentAtom> ToList() => _fragmentAtoms;
-
-
-        public FragmentAtoms AddCa(int fragmentId, Atom atomCa)
+        public int Count() => _fragmentAtoms.Count;
+        public bool Contains(FragmentId fragmentId) =>
+            _fragmentAtoms.Exists(x => x.FragmentId.Value == fragmentId.Value);
+        public FragmentAtoms AddCa(FragmentId fragmentId, Atom atomCa)
         {
-            _fragmentAtoms.Add(new FragmentAtom(new FragmentId(fragmentId),new ResidueSequencsNumber(atomCa.ResidueSequencsNumber.Value),new Atoms().Add(atomCa)));
+            _fragmentAtoms.Add(new FragmentAtom(fragmentId,atomCa.ResidueSequencsNumber,new Atoms().Add(atomCa)));
             return new FragmentAtoms(_fragmentAtoms);
         }
 
-        public bool Contains(FragmentId fragmentId)
+        public FragmentAtoms CutFragmentAtoms(FragmentId fragmentId, Atoms atomsCa, Atoms atomsCo, Atom atomCa, Atom atomCo)
         {
-            return true;
+            this.MakeNewFragmentAtom().MoveOthersCut(fragmentId);
+            
         }
 
-    }
+        private FragmentAtoms MakeNewFragmentAtom()
+        {
+            _fragmentAtoms.Add(new FragmentAtom(new FragmentId(_fragmentAtoms.Count+1)));
+            return new FragmentAtoms(_fragmentAtoms);
+        }
+
+        private FragmentAtoms MoveOthersCut(FragmentId fragmentId)
+        {
+            var n = _fragmentAtoms.Count;
+            for (var i = 0; i <n-fragmentId.Value+1; i++)
+            {
+                _fragmentAtoms[n - 1 - i] = _fragmentAtoms[n - 2 - i];
+            }
+            return new FragmentAtoms(_fragmentAtoms);
+        }
+
+        FragmentAtoms AtomsMovetTo(FragmentAtom atom)
+        {
+            
+        }
+
+        public FragmentAtoms MoveToNext(FragmentId fragmentId,Atoms atomsCa, Atoms atomsCo, Atom atomCa, Atom atomCo)
+        {
+            this[fragmentId]
+        }
+        
+     }
 }

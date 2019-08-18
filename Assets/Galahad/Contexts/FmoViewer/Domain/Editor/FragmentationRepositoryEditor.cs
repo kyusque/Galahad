@@ -16,6 +16,10 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
 
         public override void OnInspectorGUI()
         {
+            if (GUILayout.Button("newcut"))
+            {
+                fragmentationRepository.NewAutoResidueCut(fragmentationRepository.PdbRepository.Pdb);
+            }
             if (GUILayout.Button("AutCut"))
             {
                 fragmentationRepository.AutoCut(fragmentationRepository.PdbRepository.Pdb);

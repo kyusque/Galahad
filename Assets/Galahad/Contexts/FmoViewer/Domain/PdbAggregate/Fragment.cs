@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 {
+    [Serializable]
     public class Fragment:ISerializationCallbackReceiver
     {
     [SerializeField] private List<FragmentAtom> fragmentAtoms;
@@ -16,7 +18,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     {
         FragmentHetatms = fragmentHetatms;
         FragmentAtoms = fragmentAtoms;
-        
+        FragmentBonds = fragmentBonds;
     }
 
     public FragmentAtoms FragmentAtoms { get; private set; }

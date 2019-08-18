@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
@@ -5,27 +6,29 @@ using UnityEngine;
 
 namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 {
+    [Serializable]
     public class FragmentHetatm:ISerializationCallbackReceiver
     {
         [SerializeField] private int fragmentId;
         [SerializeField] private int residueSequencsNumber;
         [SerializeField] private List<Hetatm> hetatms;
-        public FragmentHetatm(){}
 
-        public FragmentHetatm(ResidueSequencsNumber residueSequencsNumber) : this()
+        
+        public FragmentHetatm( ResidueSequencsNumber residueSequencsNumber,
+            Hetatms hetatms,FragmentId fragmentId)
         {
             ResidueSequencsNumber = residueSequencsNumber;
-        }
-        public FragmentHetatm( ResidueSequencsNumber residueSequencsNumber,
-            Hetatms hetatms) : this(residueSequencsNumber)
-        {
             Hetatms = hetatms;
-        }
-        public FragmentHetatm( ResidueSequencsNumber residueSequencsNumber,
-            Hetatms hetatms,FragmentId fragmentId) : this(residueSequencsNumber)
-        {
             FragmentId = fragmentId;
         }
+        public FragmentHetatm(ResidueSequencsNumber residueSequencsNumber,Hetatms hetatms)
+            :this(residueSequencsNumber,hetatms,new FragmentId())
+        {
+        }
+        public FragmentHetatm( ResidueSequencsNumber residueSequencsNumber) : this(residueSequencsNumber,new Hetatms())
+        {
+        }
+        public FragmentHetatm():this(new ResidueSequencsNumber()){}
         public FragmentId FragmentId { get; set; }
         public ResidueSequencsNumber ResidueSequencsNumber { get; set; }
         public Hetatms Hetatms { get; set; }
@@ -33,7 +36,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public FragmentHetatm Add(Hetatm hetatm)
         {
             Hetatms.Add(hetatm);
-            return new FragmentHetatm(ResidueSequencsNumber,Hetatms);
+            return new FragmentHetatm(hetatm.ResidueSequencsNumber,Hetatms);
         }
         public void OnBeforeSerialize()
         {
@@ -53,12 +56,12 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     public class FragmentHetatms
     {
         private List<FragmentHetatm> _fragmentHetatms;
-        public FragmentHetatms(){}
 
         public FragmentHetatms(List<FragmentHetatm> fragmentHetatms)
         {
             _fragmentHetatms = fragmentHetatms;
         }
+        public FragmentHetatms():this(new List<FragmentHetatm>()){}
 
         public FragmentHetatm this[ResidueSequencsNumber residueSequencsNumber]
             => _fragmentHetatms.FirstOrDefault(x => x.ResidueSequencsNumber.Value == residueSequencsNumber.Value);
@@ -67,7 +70,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public FragmentHetatms Add(ResidueSequencsNumber residueSequencsNumber)
         {
-            _fragmentHetatms.Add(new FragmentHetatm());
+            _fragmentHetatms.Add(new FragmentHetatm(residueSequencsNumber));
             return new FragmentHetatms(_fragmentHetatms);
         }
         public bool Exists(ResidueSequencsNumber residueSequencsNumber)

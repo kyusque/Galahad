@@ -8,6 +8,12 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
             Value = i;
         }
 
+        public ResidueSequencsNumber():this(-1){}
+
         public int Value { get; }
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }
