@@ -8,6 +8,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     [Serializable]
     public class Atom:ISerializationCallbackReceiver
     {
+        [SerializeField] private string Name;
         [SerializeField] private int atomSerialNumber;
         [SerializeField] private AtomName atomName;
         [SerializeField] private int alternateLocationIndicator;
@@ -17,7 +18,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         [SerializeField] private string codeForInsertionOfResidues;
         [SerializeField] private Vector3 position;
         [SerializeField] private float occupancy;
-        [SerializeField] private float tempratureFactor;
+        [SerializeField] private float temperatureFactor;
         [SerializeField] private ElementSymbol elementSymbol;
         [SerializeField] private int formalCharge;
         
@@ -39,6 +40,11 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             ElementSymbol = (ElementSymbol) Enum.Parse(typeof(AtomicNumber), elementSymbol);
             FormalCharge = !int.TryParse(formalCharge.Substring(1,1)+formalCharge.Substring(0,1),out var foResult) ? new FormalCharge(0) : new FormalCharge(foResult);
            
+        }
+
+        public Atom()
+        {
+            
         }
 
         public override bool Equals(object obj)
@@ -85,6 +91,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public void OnBeforeSerialize()
         {
+            Name = AtomName.ToString();
             atomSerialNumber = AtomSerialNumber?.Value ?? -1;
             atomName = AtomName;
             alternateLocationIndicator = AlternateLocationIndicator?.Value ?? 0;
@@ -94,7 +101,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             codeForInsertionOfResidues = CodeForInsertionOfResidues?.Value ?? "";
             position = Position?.Value ?? Vector3.zero;
             occupancy = Occupancy?.Value ?? 0f;
-            tempratureFactor = TemperatureFactor?.Value ?? 0f;
+            temperatureFactor = TemperatureFactor?.Value ?? 0f;
             elementSymbol = ElementSymbol;
             formalCharge = FormalCharge?.Value ?? 0;
         }
@@ -110,7 +117,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             CodeForInsertionOfResidues=new CodeForInsertionOfResidues(codeForInsertionOfResidues);
             Position=new Position(position);
             Occupancy=new Occupancy(occupancy);
-            TemperatureFactor=new TemperatureFactor(tempratureFactor);
+            TemperatureFactor=new TemperatureFactor(temperatureFactor);
             ElementSymbol = elementSymbol;
             FormalCharge = new FormalCharge(formalCharge);
         }
@@ -192,7 +199,11 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         {
             return _atoms.Exists(x => x.AtomName == AtomName.CA && x.ResidueName == residueName);
         }
-        
+
+        public ResidueName ResidueName()
+        {
+            return _atoms.FirstOrDefault(x => x.AtomName == AtomName.CA)?.ResidueName??ValueObjects.ResidueName.CANULL;
+        }
 
         public bool Exists(Atom atom)
         {

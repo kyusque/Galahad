@@ -9,6 +9,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     [Serializable]
     public class Hetatm:ISerializationCallbackReceiver
     {
+        [SerializeField] private string Name;
         [SerializeField] private int atomSerialNumber;
         [SerializeField] private int alternateLocationIndicator;
         [SerializeField] private AtomName atomName;
@@ -63,6 +64,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public void OnBeforeSerialize()
         {
+            Name = AtomName.ToString();
             atomSerialNumber = AtomSerialNumber?.Value ?? 0;
             atomName = AtomName;
             alternateLocationIndicator = AlternateLocationIndicator?.Value ?? 0;
@@ -108,6 +110,11 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public Hetatm this[AtomSerialNumber atomSerialNumber] =>
             _hetatms.FirstOrDefault(x => x.AtomSerialNumber.Value == atomSerialNumber.Value);
+
+        public HetatmResidueName HetatmResidueName()
+        {
+            return _hetatms.Count==0 ? new HetatmResidueName("??") : _hetatms[0].HetatmResidueName;
+        }
 
         public List<Hetatm> ToList()
         {

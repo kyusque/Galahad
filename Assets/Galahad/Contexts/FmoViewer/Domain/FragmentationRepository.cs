@@ -555,7 +555,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
                             else
                             {
                                 Fragment.FragmentAtoms[new ResidueSequencsNumber( atom.ResidueSequencsNumber.Value+1)].Add(atom);
-                                Fragment.FragmentBonds[Fragment.FragmentAtoms[atom.ResidueSequencsNumber].FragmentId]
+                                Fragment.FragmentBonds[Fragment.FragmentAtoms[new ResidueSequencsNumber( atom.ResidueSequencsNumber.Value+1)]]
                                     .AddGetAtom(atom);
                             };
                         }
@@ -597,143 +597,17 @@ namespace Galahad.Contexts.FmoViewer.Domain
 
         public void NewAutoResidueCut()
         {
-            var fragmentCuts = Fragment.FragmentAtoms.ToList();
             var n= Fragment.FragmentAtoms.Count();
             for (var i = 0; i < n; i++)
             {
-                FragmentCutInformation.FragmentCuts.BeforeCutAtoms(new FragmentId(n - i));
-                var m = FragmentCutInformation.FragmentCuts[n - i].Atoms.Count();
-                for (var j = 0; j <m; j++)
+                if (Fragment.FragmentAtoms[new FragmentId(n-i)].ResidueName=="GLY")
                 {
-                    switch (FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1].AtomName)
-                    {
-                        case AtomName.CA:
-                            break;
-                        case AtomName.HA:
-                            break;
-                        case AtomName.C:
-                            break;
-                        case AtomName.H:
-                            break;
-                        case AtomName.N:
-                            break;
-                        case AtomName.H1:
-                            break;
-                        case AtomName.H2:
-                            break;
-                        case AtomName.H3:
-                            break;
-                        case AtomName.O:
-                            break;
-                        case AtomName.OX:
-                            break;
-                        case AtomName.CB:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.CD:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.CE:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.CG:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.CH:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.CZ:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HB:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HC:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HD:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HE:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HG:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HH:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HZ:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.ND:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.NE:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.NH:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.NZ:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.OD:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.OE:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.OG:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.OH:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.SD:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.SG:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HD1:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HD2:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HE2:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HG1:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HG2:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HH1:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HH2:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        case AtomName.HH3:
-                            FragmentCutInformation.FragmentCuts.AtomMoveToNextFragmentCut(FragmentCutInformation.FragmentCuts[n - i].Atoms[m-j-1],new FragmentId(n-i));
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-
+                    continue;
                 }
+                Fragment.FragmentAtoms.AddLastNew().MoveOther(new FragmentId(n - i)).ResidueCut(new FragmentId(n - i));
             }
             
         } 
-        public void Cut(Atoms atoms, Atom ca,Atom co)
-        {
-            FragmentCutInformation.FragmentCuts.Add(
-                new FragmentCut(new FragmentId(FragmentCutInformation.FragmentCuts.Count() + 1)));
-            
-        }
         
     
         public override void InstallBindings()

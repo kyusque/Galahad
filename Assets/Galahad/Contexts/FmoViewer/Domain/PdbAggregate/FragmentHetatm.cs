@@ -9,6 +9,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     [Serializable]
     public class FragmentHetatm:ISerializationCallbackReceiver
     {
+        [SerializeField] private string name;
         [SerializeField] private int fragmentId;
         [SerializeField] private int residueSequencsNumber;
         [SerializeField] private List<Hetatm> hetatms;
@@ -40,6 +41,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         }
         public void OnBeforeSerialize()
         {
+            name = Hetatms.HetatmResidueName().Value;
             fragmentId = FragmentId?.Value ?? -1;
             residueSequencsNumber = ResidueSequencsNumber?.Value ?? -1;
             hetatms = Hetatms?.ToList()??new List<Hetatm>();

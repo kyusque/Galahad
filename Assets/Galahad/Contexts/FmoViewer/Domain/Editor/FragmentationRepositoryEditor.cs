@@ -19,6 +19,9 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
             if (GUILayout.Button("newcut"))
             {
                 fragmentationRepository.NewAutoResidueCut(fragmentationRepository.PdbRepository.Pdb);
+            }if (GUILayout.Button("newResiduecut"))
+            {
+                fragmentationRepository.NewAutoResidueCut();
             }
             if (GUILayout.Button("AutCut"))
             {

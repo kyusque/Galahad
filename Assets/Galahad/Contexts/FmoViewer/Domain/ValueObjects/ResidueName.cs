@@ -22,5 +22,6 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
         GLN,
         ILE,
         PRO,
+        CANULL
     }
 }
