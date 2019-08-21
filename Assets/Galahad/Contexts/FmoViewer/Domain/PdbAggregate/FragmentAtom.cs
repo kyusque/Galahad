@@ -12,35 +12,54 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         [SerializeField] private string residueName;
         [SerializeField] private int fragmentId;
         [SerializeField] private int residuwSequencsNumber;
+        [SerializeField] private List<Bond> bonds;
         [SerializeField] private List<Atom> atoms;
-        public FragmentAtom(FragmentId fragmentId,ResidueSequencsNumber residueSequencsNumber, Atoms atoms)
+        
+        public FragmentAtom(FragmentId fragmentId, ResidueSequencsNumber residueSequencsNumber, Atoms atoms,
+            Bonds bonds)
         {
             FragmentId = fragmentId;
             ResidueSequencsNumber = residueSequencsNumber;
             Atoms = atoms;
+            Bonds = bonds;
+        }
+        public FragmentAtom(FragmentId fragmentId,ResidueSequencsNumber residueSequencsNumber, Atoms atoms):this(fragmentId,residueSequencsNumber,atoms,new Bonds())
+        {
         }
 
-        public FragmentAtom(FragmentId fragmentId):this(fragmentId,new ResidueSequencsNumber(),new Atoms() ){}
+        public FragmentAtom(FragmentId fragmentId):this(fragmentId,new ResidueSequencsNumber(),new Atoms(),new Bonds()){}
         
-        public FragmentAtom():this(new FragmentId(),new ResidueSequencsNumber(),new Atoms() ){}
+        public FragmentAtom():this(new FragmentId(),new ResidueSequencsNumber(),new Atoms(),new Bonds()){}
 
         public FragmentId FragmentId { get; set; }
         public ResidueSequencsNumber ResidueSequencsNumber { get; set; }
         public Atoms Atoms { get; set; }
+        public Bonds Bonds { get; set; }
+
+        public FragmentAtom Inject(Bonds Bonds)
+        {
+            this.Bonds = Bonds;
+            return this;
+        }
+        public FragmentAtom Add(Bond bond)
+        {
+            this.Bonds.Add(bond);
+            return this;
+        }
 
         public string ResidueName => residueName;
 
         public FragmentAtom Add(Atom atom)
         {
             Atoms.Add(atom);
-            return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms);
+            return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms,Bonds);
         }
 
         public FragmentAtom Add(FragmentAtom fragmentAtom)
         {
             Atoms = fragmentAtom.Atoms;
-            ResidueSequencsNumber = fragmentAtom.ResidueSequencsNumber;
-            return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms);
+            ResidueSequencsNumber = new ResidueSequencsNumber(fragmentAtom.ResidueSequencsNumber.Value);
+            return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms,Bonds);
         }
 
         public FragmentAtom Remove(Atom atom)
@@ -52,7 +71,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         {
             ResidueSequencsNumber=new ResidueSequencsNumber(-1);
             Atoms=new Atoms();
-            return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms);
+            Bonds=new Bonds();
+            return new FragmentAtom(FragmentId,ResidueSequencsNumber,Atoms,Bonds);
         }
         public void OnBeforeSerialize()
         {
@@ -60,12 +80,14 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             fragmentId = FragmentId?.Value ?? -1;
             residuwSequencsNumber = ResidueSequencsNumber?.Value ?? -1;
             atoms = Atoms?.ToList() ?? new List<Atom>();
+            bonds = Bonds?.Tolist() ?? new List<Bond>();
         }
         public void OnAfterDeserialize()
         {
             FragmentId=new FragmentId(fragmentId);
             ResidueSequencsNumber=new ResidueSequencsNumber(residuwSequencsNumber);
             Atoms=new Atoms(atoms);
+            Bonds=new Bonds(bonds);
         }
     }
 
@@ -89,15 +111,15 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public int Count() => _fragmentAtoms.Count;
         public bool Contains(FragmentId fragmentId) =>
             _fragmentAtoms.Exists(x => x.FragmentId.Value == fragmentId.Value);
-        public FragmentAtoms AddCa(FragmentId fragmentId, Atom atomCa)
+        public FragmentAtom AddCa(FragmentId fragmentId, Atom atomCa)
         {
             _fragmentAtoms.Add(new FragmentAtom(fragmentId,atomCa.ResidueSequencsNumber,new Atoms().Add(atomCa)));
-            return new FragmentAtoms(_fragmentAtoms);
+            return _fragmentAtoms[_fragmentAtoms.Count-1];
         }
 
         private FragmentAtoms AtomsMoveToNextFragmentAtoms(FragmentId fragmentId)
         {
-            this[new FragmentId(fragmentId.Value+1)].Add(this[fragmentId]);
+            this[new FragmentId(fragmentId.Value+1)].Add(this[fragmentId]).Inject(this[fragmentId].Bonds);
             this[fragmentId].Remove();
             return this;
         }
@@ -129,15 +151,17 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
             return this;
         }
-
-        public FragmentAtoms ResidueCut(FragmentId fragmentId)
+        public Bonds OneResidueCut(FragmentId fragmentId,int bondNumber)
         {
             var atoms = this[fragmentId].Atoms.Count();
+            var bonds=new Bonds();
             for (var i = 0; i < atoms; i++)
             {
                 switch (this[fragmentId].Atoms[atoms-i-1].AtomName)
                 {
                     case AtomName.CA:
+                        this[fragmentId].Bonds.Add(new Bond(bondNumber, this[fragmentId].Atoms[atoms - i - 1], false));
+                        bonds.Add(new Bond(bondNumber, this[fragmentId].Atoms[atoms - i - 1], false));
                         break;
                     case AtomName.HA:
                         break;
@@ -158,6 +182,12 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
                     case AtomName.OX:
                         break;
                     case AtomName.CB:
+                        this[new FragmentId(fragmentId.Value + 1)].ResidueSequencsNumber =
+                            this[fragmentId].Atoms[atoms - i - 1].ResidueSequencsNumber;
+                        this[new FragmentId(fragmentId.Value + 1)].Bonds.Add(new Bond(bondNumber,
+                            this[fragmentId].Atoms[atoms - i - 1], false));
+                        bonds.Add(new Bond(bondNumber,
+                            this[fragmentId].Atoms[atoms - i - 1], false));
                         AtomMoveToNext(fragmentId, this[fragmentId].Atoms[atoms - i - 1]);
                         break;
                     case AtomName.CD:
@@ -255,7 +285,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
                 }
             }
 
-            return this;
+            return bonds;
         }
         
 

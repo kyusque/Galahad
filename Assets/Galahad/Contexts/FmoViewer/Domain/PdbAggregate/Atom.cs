@@ -182,7 +182,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public bool Contains()
         {
-            return _atoms.Count != 0;
+            return  _atoms.Any();
         }
 
         public bool Exists(ResidueSequencsNumber residueSequencsNumber)

@@ -16,6 +16,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
         public PdbRepository PdbRepository;
         public FragmentCutInformation FragmentCutInformation;
         public Fragment Fragment;
+        public Dictionary<int,Bonds> Bonds;
 
         public void WriteAjf(string readpath,string writepath,string saveName,string basisSet)
         {
@@ -75,108 +76,122 @@ namespace Galahad.Contexts.FmoViewer.Domain
         {
             var frg = "";
             var write = "";
-            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            //
+            foreach (var fragmentAtom in Fragment.FragmentAtoms.ToList())
             {
-                if (fragmentCut.Atoms.Contains())
+                if (!fragmentAtom.Atoms.Contains()) continue;
+                if (frg.Length>80)
                 {
-                    if (frg.Length>80)
-                    {
-                        write += Environment.NewLine + frg;
-                        frg = "";
-                    }
-                    frg += $"{fragmentCut.Atoms.Count().ToString(),8}";
+                    write += Environment.NewLine + frg;
+                    frg = "";
                 }
-                else if (fragmentCut.Hetatms.Contains())
+                frg += $"{fragmentAtom.Atoms.Count().ToString(),8}";
+            }
+            foreach (var fragmentHetatm in Fragment.FragmentHetatms.ToList())
+            {
+                if (!fragmentHetatm.Hetatms.Contains()) continue;
+                if (frg.Length > 80)
                 {
-                    if (frg.Length > 80)
-                    {
-                        write += Environment.NewLine + frg;
-                        frg = "";
-                    }
-                    frg += $"{fragmentCut.Hetatms.Count().ToString(),8}";
+                    write += Environment.NewLine + frg;
+                    frg = "";
                 }
+                frg += $"{fragmentHetatm.Hetatms.Count().ToString(),8}";
             }
             write += Environment.NewLine + frg;
             frg = "";
-            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            //原子数
+            //
+            foreach (var fragmentAtom in Fragment.FragmentAtoms.ToList())
             {
-                if (fragmentCut.Atoms.Contains())
+                if (!fragmentAtom.Atoms.Contains()) continue;
+                if (frg.Length>79)
                 {
-                    if (frg.Length>79)
-                    {
-                        write += Environment.NewLine + frg;
-                        frg = "";
-                    }
-                    frg += $"{fragmentCut.Atoms.TotalCharge(),8}";
+                    write += Environment.NewLine + frg;
+                    frg = "";
                 }
-                else if(fragmentCut.Hetatms.Contains())
+                frg += $"{fragmentAtom.Atoms.TotalCharge(),8}";
+            }
+
+            foreach (var fragmentHetatm in Fragment.FragmentHetatms.ToList())
+            {
+                if (!fragmentHetatm.Hetatms.Contains()) continue;
+                if (frg.Length>79)
                 {
-                    if (frg.Length>79)
-                    {
-                        write += Environment.NewLine + frg;
-                        frg = "";
-                    }
-                    frg += $"{fragmentCut.Hetatms.TotalCharge(),8}";
+                    write += Environment.NewLine + frg;
+                    frg = "";
                 }
+                frg += $"{fragmentHetatm.Hetatms.TotalCharge(),8}";
             }
             write += Environment.NewLine + frg;
             frg = "";
-            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            //形式電荷
+            //
+            foreach (var fragmentAtom in Fragment.FragmentAtoms.ToList())
             {
                 if (frg.Length>79)
                 {
                     write += Environment.NewLine + frg;
                     frg = "";
                 }
-                if (fragmentCut.Atoms.Contains())
+                if (fragmentAtom.Atoms.Contains())
                 {
-                    frg += $"{fragmentCut.Atoms.TotalCharge(),8}";
-                    
+                    frg += $"{fragmentAtom.Bonds.BondNum(),8}";
                 }
-                else if (fragmentCut.Hetatms.Contains())
+            }
+//            foreach (var fragmentHetatm in Fragment.FragmentHetatms.ToList())
+//            {
+//                if (frg.Length>79)
+//                {
+//                    write += Environment.NewLine + frg;
+//                    frg = "";
+//                }
+//                if (fragmentHetatm.Hetatms.Contains())
+//                {
+//                    frg += $"{fragmentHetatm.Hetatms.TotalCharge(),8}";
+//                }
+//            }
+            write += Environment.NewLine + frg;
+            frg = "";
+            //結合本数
+            //
+            foreach (var fragmentAtom in Fragment.FragmentAtoms.ToList())
+            {
+                if (!fragmentAtom.Atoms.Contains()) continue;
+                foreach (var atom in fragmentAtom.Atoms.ToList())
                 {
-                    frg += $"{fragmentCut.Hetatms.TotalCharge(),8}";
+                    if (frg.Length>79)
+                    {
+                        write += Environment.NewLine + frg;
+                        frg = "";
+                    }
+                    frg += $"{atom.AtomSerialNumber.Value,8}";
+                }
+                write += Environment.NewLine + frg;
+                frg = "";
+            }
+            foreach (var hetems in Fragment.FragmentHetatms.ToList())
+            {
+                foreach (var hetem in hetems.Hetatms.ToList())
+                {
+                    if (frg.Length>79)
+                    {
+                        write += Environment.NewLine + frg;
+                        frg = "";
+                    }
+                    frg += $"{hetem.AtomSerialNumber.Value,8}";
                 }
             }
             write += Environment.NewLine + frg;
             frg = "";
-            foreach (var fragmentCut in FragmentCutInformation.FragmentCuts.ToList())
+            //原子の番号
+            //
+            foreach (var bond in Bonds)
             {
-                if (fragmentCut.Atoms.Contains())
-                {
-                    foreach (var atom in fragmentCut.Atoms.ToList())
-                    {
-                        if (frg.Length>79)
-                        {
-                            write += Environment.NewLine + frg;
-                            frg = "";
-                        }
-                        frg += $"{atom.AtomSerialNumber.Value,8}";
-                    }
-                    write += Environment.NewLine + frg;
-                    frg = "";
-                }
-                else
-                {
-                    foreach (var hetatm in fragmentCut.Hetatms.ToList())
-                    {
-                        if (frg.Length>79)
-                        {
-                            write += Environment.NewLine + frg;
-                            frg = "";
-                        }
-                        frg += $"{hetatm.AtomSerialNumber,8}";
-                    }
-                }
+                frg += $"{bond.Value.False().AtomSerialNumber.Value,8}" + $"{bond.Value.True().AtomSerialNumber.Value,8}";
                 write += Environment.NewLine + frg;
                 frg = "";
             }
-            foreach (var fragmentBond in FragmentCutInformation.FragmentBonds.ToList())
-            {
-                frg += $"{fragmentBond.CA.AtomSerialNumber,8}" + $"{fragmentBond.CO.AtomSerialNumber,8}";
-                write += Environment.NewLine + frg;
-                frg = "";
-            }
+            //結合しているフラグメントの原子番号
             return write;
         }
         
@@ -520,6 +535,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
         public void NewAutoResidueCut(Pdb pdb)
         {
             Fragment = null;
+            Bonds=new Dictionary<int, Bonds>();
             Debug.Log("start");
             var fragmentAtoms=new FragmentAtoms();
             var fragmentHetatms = new FragmentHetatms();
@@ -540,13 +556,16 @@ namespace Galahad.Contexts.FmoViewer.Domain
                             }
                             else
                             {
-                                Fragment.FragmentAtoms.AddCa(new FragmentId(ca.IndexOf(atom)+1),atom);
+                                Fragment.FragmentAtoms.AddCa(new FragmentId(ca.IndexOf(atom)+1),atom).Add(new Bond(ca.IndexOf(atom)+1,atom,false));
+                                Bonds.Add(ca.IndexOf(atom)+1,new Bonds().Add(new Bond(ca.IndexOf(atom)+1,atom,false)));
                                 Fragment.FragmentBonds.AddNewCa(new FragmentId(ca.IndexOf(atom)+1),atom);
+                                
                             }
                         }
                         break;
                     case AtomName.C:
-                        foreach (var atom in pdb.Atoms.Get(value).ToList())
+                        var c=pdb.Atoms.Get(value);
+                        foreach (var atom in c.ToList())
                         {
                             if (endAtoms.Exists(atom.ResidueSequencsNumber))
                             {
@@ -554,8 +573,11 @@ namespace Galahad.Contexts.FmoViewer.Domain
                             }
                             else
                             {
-                                Fragment.FragmentAtoms[new ResidueSequencsNumber( atom.ResidueSequencsNumber.Value+1)].Add(atom);
-                                Fragment.FragmentBonds[Fragment.FragmentAtoms[new ResidueSequencsNumber( atom.ResidueSequencsNumber.Value+1)]]
+                                Fragment.FragmentAtoms[new ResidueSequencsNumber( atom.ResidueSequencsNumber.Value+1)]
+                                    .Add(atom)
+                                    .Add(new Bond(c.IndexOf(atom)+1,atom,true));
+                                Bonds[c.IndexOf(atom) + 1].Add(new Bond(c.IndexOf(atom) + 1, atom, true));
+                                Fragment.FragmentBonds[Fragment.FragmentAtoms[atom.ResidueSequencsNumber].FragmentId]
                                     .AddGetAtom(atom);
                             };
                         }
@@ -604,7 +626,10 @@ namespace Galahad.Contexts.FmoViewer.Domain
                 {
                     continue;
                 }
-                Fragment.FragmentAtoms.AddLastNew().MoveOther(new FragmentId(n - i)).ResidueCut(new FragmentId(n - i));
+                Bonds.Add(Bonds.Count+1,Fragment.FragmentAtoms
+                    .AddLastNew()
+                    .MoveOther(new FragmentId(n - i))
+                    .OneResidueCut(new FragmentId(n - i),Bonds.Count+1));
             }
             
         } 

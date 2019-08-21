@@ -9,6 +9,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     [Serializable]
     public class FragmentBond:ISerializationCallbackReceiver
     {
+        [SerializeField] private int bondnumber;
         [SerializeField] private int fragmentIdCa;
         [SerializeField] private int fragmentIdCo;
         [SerializeField] private Atom ca;
@@ -29,24 +30,9 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             FragmentIdCo = fragmentIdCo;
             CO = co;
         }
-
-        public FragmentBond(FragmentAtom fragmentAtomCa, Atom ca, FragmentAtom fragmentAtomCo, Atom co):this()
-        {
-            FragmentAtomCa = fragmentAtomCa;
-            FragmentAtomCo = fragmentAtomCo;
-            CA = ca;
-            CO = co;
-        }
-
-        public FragmentBond(FragmentAtom fragmentAtomCa, Atom ca) : this(fragmentAtomCa, ca,new FragmentAtom(),new Atom() )
-        {
-            
-        }
-        public FragmentAtom FragmentAtomCa { get; set; }
-        public FragmentAtom FragmentAtomCo { get; set; }
-
-        public FragmentId FragmentIdCa { get; private set; }
-        public FragmentId FragmentIdCo { get; private set; }
+        public int BondNumber { get; }
+        public FragmentId FragmentIdCa { get; internal set; }
+        public FragmentId FragmentIdCo { get; internal set; }
         public Atom CA { get; set; } //give
         public Atom CO { get; set; } //get
         public FragmentBond AddGiveAtom(Atom ca)
@@ -71,17 +57,17 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public void OnBeforeSerialize()
         {
-            fragmentIdCa = FragmentAtomCa?.FragmentId?.Value??-1;
-            fragmentIdCo = FragmentAtomCo?.FragmentId?.Value??-1;
+            bondnumber = BondNumber;
+            fragmentIdCa = FragmentIdCa?.Value??-1;
+            fragmentIdCo = FragmentIdCo?.Value??-1;
             ca = CA;
             co = CO;
         }
 
         public void OnAfterDeserialize()
         {
-            FragmentAtomCa=new FragmentAtom();
-            FragmentIdCa=new FragmentId(fragmentIdCa);
-            FragmentIdCo=new FragmentId(fragmentIdCo);
+            FragmentIdCa = new FragmentId(fragmentIdCa);
+            FragmentIdCo= new FragmentId(fragmentIdCo);
             CA=ca;
             CO = co;
         }
@@ -105,8 +91,6 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public FragmentBond this[FragmentId fragmentId] => _fragmentBond.Find(x => x.FragmentIdCa.Value == fragmentId.Value);
 
-        public FragmentBond this[FragmentAtom atom] =>
-            _fragmentBond.FirstOrDefault(x => x.FragmentAtomCa.FragmentId == atom.FragmentId);
         public FragmentBonds Add(FragmentId fragmentId)
         {
             if (_fragmentBond.Exists(x => x.FragmentIdCa == fragmentId)) return new FragmentBonds(_fragmentBond);
@@ -114,11 +98,6 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
             return new FragmentBonds(_fragmentBond);
         }
 
-        public FragmentBonds AddNewCa(FragmentAtom fragmentAtomCa,Atom ca)
-        {
-            _fragmentBond.Add(new FragmentBond(fragmentAtomCa,ca));
-            return new FragmentBonds(_fragmentBond);
-        }
 
 
         public FragmentBonds AddCa(Atom atom,FragmentId fragmentId)
@@ -137,6 +116,24 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         {
             _fragmentBond.FirstOrDefault(x => x.CA.ResidueSequencsNumber.Value == co.ResidueSequencsNumber.Value)
                 .AddGetAtom(co);
+            return new FragmentBonds(_fragmentBond);
+        }
+
+        public FragmentBonds MoveFragmentIdToNext(FragmentId fragmentId)
+        {
+            
+            var fragmentbond =
+                _fragmentBond.Where(x => x.FragmentIdCa.Value >= fragmentId.Value);
+            foreach (var fragmentBond in fragmentbond)
+            {
+                fragmentBond.FragmentIdCa=new FragmentId(fragmentBond.FragmentIdCa.Value+1);
+            }
+            fragmentbond =
+                _fragmentBond.Where(x => x.FragmentIdCo.Value >= fragmentId.Value);
+            foreach (var fragmentBond in fragmentbond)
+            {
+                fragmentBond.FragmentIdCo=new FragmentId(fragmentBond.FragmentIdCo.Value+1);
+            }
             return new FragmentBonds(_fragmentBond);
         }
 
