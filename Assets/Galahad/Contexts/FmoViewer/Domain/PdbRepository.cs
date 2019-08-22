@@ -39,22 +39,6 @@ public class PdbRepository : ScriptableObjectInstaller<PdbRepository>
         }
     }
 
-    public void save(Pdb pdb,string templeteajf)
-    {
-//        System.Diagnostics.Process.Start(@"C:","/select,");
-////        System.Diagnostics.Process.Start()
-//        using (var myProcess = new Process())
-//        {
-//            EditorUtility.SaveFilePanel("","","","")
-//        }
-
-        var path = EditorUtility.SaveFilePanel("save ajf", "", "", "ajf");
-        if (path.Length!=0)
-        {
-            
-        }
-    }
-
     public void writer(string templeteajf,string path,string basename)
     {
         using (var writer=new StreamWriter(path))

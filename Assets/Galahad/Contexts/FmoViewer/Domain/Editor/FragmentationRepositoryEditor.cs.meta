@@ -1,3 +1,13 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 2e471838252d4cd9b6a5a396ef7d497a
-timeCreated: 1564964937
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fragmentationRepository: {instanceID: 0}
+  - Templete: {fileID: 102900000, guid: 3cef4fadb19dbc446b65ff9d3dd148f4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

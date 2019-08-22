@@ -34,6 +34,15 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public ResidueSequencsNumber ResidueSequencsNumber { get; set; }
         public Hetatms Hetatms { get; set; }
         public Bonds Bonds { get; set; }
+        public State State { get; set; }
+
+        public FragmentHetatm Init()
+        {
+            this.State=new State();
+            return this;
+        }
+
+        public string Name => name;
 
         public FragmentHetatm Add(Hetatm hetatm)
         {

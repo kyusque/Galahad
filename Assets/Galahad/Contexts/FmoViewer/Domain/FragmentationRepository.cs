@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Galahad.Contexts.FmoViewer.Domain.PdbAggregate;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -18,6 +19,33 @@ namespace Galahad.Contexts.FmoViewer.Domain
         public Fragment Fragment;
         public Dictionary<int,Bonds> Bonds;
 
+        public void Save(string templeteajf)
+        {
+//        System.Diagnostics.Process.Start(@"C:","/select,");
+////        System.Diagnostics.Process.Start()
+//        using (var myProcess = new Process())
+//        {
+//            EditorUtility.SaveFilePanel("","","","")
+//        }
+            var path = EditorUtility.SaveFilePanel("save ajf", "", "", "ajf");
+            if (path.Length <= 0) return;
+            var pat = Path.GetFileNameWithoutExtension(path);
+            if (File.Exists(path))
+            {
+                if (EditorUtility.DisplayDialog("overwrite?", pat + ".ajf already exists.Overwrite or Not", "overwrite",
+                        "choose other name") == false)
+                {
+                    return;
+                }
+                
+            }
+            else
+            {
+                File.Create(path);
+            }
+            WriteAjf(templeteajf,path,pat,pat);
+        }
+
         public void WriteAjf(string readpath,string writepath,string saveName,string basisSet)
         {
             using (var reader=new StreamReader(readpath))
@@ -27,41 +55,60 @@ namespace Galahad.Contexts.FmoViewer.Domain
                     string line;
                     while ((line=reader.ReadLine())!=null)
                     {
+                        Debug.Log(line);
                         if (line.Contains("{{{BASENAME}}}"))
                         {
+                            var n=line.LastIndexOf("{{{BASENAME}}}");
+                            Debug.Log(
+                                line.Substring(0, n) 
+                                +saveName
+                                +line.Substring(n+14,line.Length - n-14));
                             writer.WriteLine(
-                                line.Substring(0, line.IndexOf("{{{BASENAME}}}") - 1) + saveName +
-                                line.Substring(line.LastIndexOf("{{{BASENAME}}}") + 1),
-                                line.Length - line.LastIndexOf("{{{BASENAME}}}"));
+                                line.Substring(0, n) 
+                                +saveName
+                                +line.Substring(n+14,line.Length - n-14));
                         }
                         else if (line.Contains("{{{TOTAL_CHARGE}}}"))
                         {
+                            var n = line.IndexOf("{{{TOTAL_CHARGE}}}");
+                            Debug.Log(
+                                line.Substring(0, n - 1)
+                                +Fragment.TotalCharge()
+                                +line.Substring(n +18 ,line.Length - n-18));
                             writer.WriteLine(
-                                line.Substring(0, line.IndexOf("{{{TOTAL_CHARGE}}}") - 1) +
-                                FragmentCutInformation.FragmentCuts.TOTAL_CHARGE() +
-                                line.Substring(line.LastIndexOf("{{{TOTAL_CHARGE}}}") + 1),
-                                line.Length - line.LastIndexOf("{{{TOTAL_CHARGE}}}"));
+                                line.Substring(0, n - 1)
+                                +Fragment.TotalCharge()
+                                +line.Substring(n +18 ,line.Length - n-18));
                         }
                         else if (line.Contains("{{{BASIS_SET}}}"))
                         {
+                            var n = line.IndexOf("{{{BASIS_SET}}}");
+                            Debug.Log(
+                                line.Substring(0, n - 1)
+                                +basisSet 
+                                +line.Substring(n+ 14,line.Length - n-14));
                             writer.WriteLine(
-                                line.Substring(0, line.IndexOf("{{{BASIS_SET}}}") - 1) +
-                                basisSet +
-                                line.Substring(line.LastIndexOf("{{{BASIS_SET}}}") + 1),
-                                line.Length - line.LastIndexOf("{{{BASIS_SET}}}"));
+                                line.Substring(0, n - 1)
+                                +basisSet 
+                                +line.Substring(n+ 14,line.Length - n-14));
                         }
                         else if (line.Contains("{{{NUM_FRAGS}}}"))
                         {
+                            var n = line.IndexOf("{{{NUM_FRAGS}}}");
+                            Debug.Log(
+                                line.Substring(0, n) 
+                                +Fragment.NumFrag()
+                                +line.Substring(n + 14,line.Length - n-14));
                             writer.WriteLine(
-                                line.Substring(0, line.IndexOf("{{{NUM_FRAGS}}}") - 1) +
-                                basisSet +
-                                line.Substring(line.LastIndexOf("{{{NUM_FRAGS}}}") + 1),
-                                line.Length - line.LastIndexOf("{{{NUM_FRAGS}}}"));
+                                line.Substring(0, n) 
+                                + Fragment.NumFrag()
+                                +line.Substring(n + 14,line.Length - n-14));
                         }
                         else if (line.Contains("{{{ABINITMP_FRAGMENT}}}"))
                         {
                             writer.WriteLine("&FRAGMENT");
                             writer.Write(WriteFragment());
+                            writer.WriteLine("/");
                         }
                         else
                         {
@@ -542,6 +589,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
             var fragmentBonds=new FragmentBonds();
             var endAtoms = pdb.Atoms.GetEndOxAtoms();
             Fragment=new Fragment(fragmentAtoms,fragmentHetatms,fragmentBonds);
+            Fragment.State=new State();
             foreach (AtomName value in Enum.GetValues(typeof(AtomName)))
             {
                 switch (value)
@@ -631,7 +679,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
                     .MoveOther(new FragmentId(n - i))
                     .OneResidueCut(new FragmentId(n - i),Bonds.Count+1));
             }
-            
+            Fragment.State.Cut();
         } 
         
     

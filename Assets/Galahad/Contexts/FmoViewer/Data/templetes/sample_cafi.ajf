@@ -1,0 +1,89 @@
+&CNTRL
+  Title='test'
+  Method='CAFI'
+  ReadGeom='{{{BASENAME}}}.cpf'
+  WriteGeom='{{{BASENAME}}}.cra'
+  Memory=1000
+/
+
+&FMOCNTRL
+ Read_SCC='{{{BASENAME}}}.scc'
+/
+
+&SCF
+/
+
+&BASIS
+/
+
+&OPTCNTRL
+/
+
+&SCZV
+/
+
+&MP2
+/
+
+&MP2DNS
+/
+
+&MP2GRD
+/
+
+&MP3
+/
+
+&LMP2
+/
+
+&DFT
+/
+
+&PIEDA
+  EnergyDecomposition='YES'
+/
+&BSSE
+/
+
+&FRAGPAIR
+/
+
+&SOLVATION
+/
+
+&PBEQ
+/
+
+&POP
+/
+
+&GRIDCNTRL
+ GRID='YES'
+ WritePNO='Yes'
+ PartialGrid='Yes'
+ PartialGridRegion='1-{{{NUM_FRAGS}}}'
+
+/
+
+&CAFI
+/
+
+&XYZ
+/
+
+&FRAGMENT
+ 
+/
+
+&MDCNTRL
+/
+
+&VEL
+/
+
+&NHC
+/
+
+&TYPEFRAG
+/
