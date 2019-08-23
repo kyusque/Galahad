@@ -35,7 +35,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public Hetatms Hetatms { get; set; }
         public Bonds Bonds { get; set; }
         public State State { get; set; }
-
+        public bool Select { get; set; }
         public FragmentHetatm Init()
         {
             this.State=new State();

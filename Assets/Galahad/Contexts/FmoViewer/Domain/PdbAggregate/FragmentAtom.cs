@@ -36,6 +36,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public Atoms Atoms { get; set; }
         public Bonds Bonds { get; set; }
         public State State { get; set; }
+        public bool Select { get; set; }
 
         public FragmentAtom Init()
         {

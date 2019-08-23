@@ -60,6 +60,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public TemperatureFactor TemperatureFactor { get; private set; }
         public ElementSymbol ElementSymbol { get; private set; }
         public FormalCharge FormalCharge { get; private set; }
+        public bool Select { get; set; }
 
 
         public void OnBeforeSerialize()

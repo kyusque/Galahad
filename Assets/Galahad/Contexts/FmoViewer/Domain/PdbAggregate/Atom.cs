@@ -88,7 +88,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public  TemperatureFactor TemperatureFactor { get; set; }
         public  ElementSymbol ElementSymbol { get; set; }
         public FormalCharge FormalCharge { get; set; }
-
+public bool Select { get; set; }
         public void OnBeforeSerialize()
         {
             Name = AtomName.ToString();

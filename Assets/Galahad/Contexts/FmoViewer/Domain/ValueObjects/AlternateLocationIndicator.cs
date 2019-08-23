@@ -7,5 +7,9 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
             Value = locationIndicator;
         }
         public int Value { get; }
+        public override string ToString()
+        {
+            return Value==0 ? "" : Value.ToString();
+        }
     }
 }

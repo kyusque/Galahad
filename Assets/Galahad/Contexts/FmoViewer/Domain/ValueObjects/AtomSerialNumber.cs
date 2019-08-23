@@ -8,6 +8,10 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
         }
 
         public int Value { get; }
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
     
 }
