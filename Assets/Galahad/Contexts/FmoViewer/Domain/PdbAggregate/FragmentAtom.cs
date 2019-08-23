@@ -168,8 +168,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
                 switch (this[fragmentId].Atoms[atoms-i-1].AtomName)
                 {
                     case AtomName.CA:
-                        this[fragmentId].Bonds.Add(new Bond(bondNumber, this[fragmentId].Atoms[atoms - i - 1], false));
-                        bonds.Add(new Bond(bondNumber, this[fragmentId].Atoms[atoms - i - 1], false));
+                        this[fragmentId].Bonds.Add(new Bond(bondNumber, this[fragmentId].Atoms[atoms - i - 1].ToString(), false));
+                        bonds.Add(new Bond(bondNumber, this[fragmentId].Atoms[atoms - i - 1].ToString(), false));
                         break;
                     case AtomName.HA:
                         break;
@@ -193,9 +193,9 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
                         this[new FragmentId(fragmentId.Value + 1)].ResidueSequencsNumber =
                             this[fragmentId].Atoms[atoms - i - 1].ResidueSequencsNumber;
                         this[new FragmentId(fragmentId.Value + 1)].Bonds.Add(new Bond(bondNumber,
-                            this[fragmentId].Atoms[atoms - i - 1], false));
+                            this[fragmentId].Atoms[atoms - i - 1].ToString(), false));
                         bonds.Add(new Bond(bondNumber,
-                            this[fragmentId].Atoms[atoms - i - 1], false));
+                            this[fragmentId].Atoms[atoms - i - 1].ToString(), false));
                         AtomMoveToNext(fragmentId, this[fragmentId].Atoms[atoms - i - 1]);
                         break;
                     case AtomName.CD:

@@ -234,7 +234,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
             //
             foreach (var bond in Bonds)
             {
-                frg += $"{bond.Value.False().AtomSerialNumber.Value,8}" + $"{bond.Value.True().AtomSerialNumber.Value,8}";
+                frg += $"{bond.Value.False().Value,8}" + $"{bond.Value.True().Value,8}";
                 write += Environment.NewLine + frg;
                 frg = "";
             }
@@ -604,8 +604,8 @@ namespace Galahad.Contexts.FmoViewer.Domain
                             }
                             else
                             {
-                                Fragment.FragmentAtoms.AddCa(new FragmentId(ca.IndexOf(atom)+1),atom).Add(new Bond(ca.IndexOf(atom)+1,atom,false));
-                                Bonds.Add(ca.IndexOf(atom)+1,new Bonds().Add(new Bond(ca.IndexOf(atom)+1,atom,false)));
+                                Fragment.FragmentAtoms.AddCa(new FragmentId(ca.IndexOf(atom)+1),atom).Add(new Bond(ca.IndexOf(atom)+1,atom.ToString(),false));
+                                Bonds.Add(ca.IndexOf(atom)+1,new Bonds().Add(new Bond(ca.IndexOf(atom)+1,atom.ToString(),false)));
                                 Fragment.FragmentBonds.AddNewCa(new FragmentId(ca.IndexOf(atom)+1),atom);
                                 
                             }
@@ -623,8 +623,8 @@ namespace Galahad.Contexts.FmoViewer.Domain
                             {
                                 Fragment.FragmentAtoms[new ResidueSequencsNumber( atom.ResidueSequencsNumber.Value+1)]
                                     .Add(atom)
-                                    .Add(new Bond(c.IndexOf(atom)+1,atom,true));
-                                Bonds[c.IndexOf(atom) + 1].Add(new Bond(c.IndexOf(atom) + 1, atom, true));
+                                    .Add(new Bond(c.IndexOf(atom)+1,atom.ToString(),true));
+                                Bonds[c.IndexOf(atom) + 1].Add(new Bond(c.IndexOf(atom) + 1, atom.ToString(), true));
                                 Fragment.FragmentBonds[Fragment.FragmentAtoms[atom.ResidueSequencsNumber].FragmentId]
                                     .AddGetAtom(atom);
                             };

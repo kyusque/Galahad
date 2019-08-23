@@ -10,27 +10,33 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
     public class Bond:ISerializationCallbackReceiver
     {
         [SerializeField] private string atomName;
+        [SerializeField] private int atomSerialNumber;
         [SerializeField] private int bondNumber;
         [SerializeField] private string electron;
-        public Bond(int bondNumber,Atom atom,bool electron)//if bool is true,this atom get electron:Ca.false means lose electron:Co 
+        public Bond(int bondNumber,string atomName,bool electron)//if bool is true,this atom get electron:Ca.false means lose electron:Co 
         {
             BondNumber = bondNumber;
-            Atom = atom;
+            AtomName = atomName;
             Electron = electron;
         }
-        public int BondNumber { get; }
-        public Atom Atom { get; }
-        public bool Electron { get; }
+        public int BondNumber { get; set; }
+        public string AtomName { get; set; }
+        public AtomSerialNumber AtomSerialNumber { get; set; }
+        public bool Electron { get; set; }
         public void OnBeforeSerialize()
         {
-            atomName = Atom?.ToString() ?? "??";
+            atomName = AtomName ?? "??";
             bondNumber = BondNumber;
             electron = Electron.ToString();
+            atomSerialNumber = AtomSerialNumber?.Value ?? 0;
         }
 
         public void OnAfterDeserialize()
         {
-            throw new NotImplementedException();
+            BondNumber = bondNumber;
+            Electron=bool.Parse(electron);
+            AtomName = atomName;
+            AtomSerialNumber=new AtomSerialNumber(atomSerialNumber);
         }
     }
 
@@ -46,7 +52,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
         public List<Bond> Tolist() => _bonds;
 
         public bool Contains(Atom atom) =>
-            _bonds.Exists(x => x.Atom.AtomSerialNumber.Value == atom.AtomSerialNumber.Value);
+            _bonds.Exists(x => x.AtomSerialNumber.Value == atom.AtomSerialNumber.Value);
 
         public Bonds Add(Bond bond)
         {
@@ -59,8 +65,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.ValueObjects
             return _bonds.Count != 0;
         }
 
-        public Atom False() => _bonds.FirstOrDefault(x => x.Electron == false)?.Atom;
-        public Atom True() => _bonds.FirstOrDefault(x => x.Electron == true)?.Atom;
+        public AtomSerialNumber False() => _bonds.FirstOrDefault(x => x.Electron == false)?.AtomSerialNumber;
+        public AtomSerialNumber True() => _bonds.FirstOrDefault(x => x.Electron == true)?.AtomSerialNumber;
         public int BondNum() => _bonds.Count(x => x.Electron == true);
     }
 }
