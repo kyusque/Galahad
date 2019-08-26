@@ -10,6 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82041bbbff77c574098d90966643dacc, type: 3}
-  m_Name: AtomColorPalette
+  m_Name: AtomColorPalette-Fmo
   m_EditorClassIdentifier: 
-  materials: []
+  materials:
+  - {fileID: 2100000, guid: 336cfe58a48ea42b2a72af5ecd314539, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: 657e9e93a48b243fe86a79f789da3c55, type: 2}
+  - {fileID: 2100000, guid: 97f6884dbbad3479cbae41aa86d5bbfd, type: 2}
+  - {fileID: 2100000, guid: 2ab396e3881c54e96b4623a8fc00cd46, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: 86bd9abe338d14944bdd06b29ddde7f6, type: 2}
+  - {fileID: 2100000, guid: c60ad9711488642beb23b3ae17810d75, type: 2}
+  - {fileID: 2100000, guid: 99b86117ce8884588b47f058d716a86a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

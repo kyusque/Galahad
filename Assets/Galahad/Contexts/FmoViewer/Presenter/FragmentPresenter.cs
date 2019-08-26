@@ -13,17 +13,10 @@ namespace Galahad.Contexts.FmoViewer.Presenter
         {
             //自分を返す
             this.model = model;
+            gameObject.name = this.model.ResidueName;
             return this;
         }
 
-        public FragmentPresenter Create(Transform parent)
-        {
-            var gameObject = new GameObject()
-                {name = model.ResidueName, transform = {parent = parent, localPosition = parent.transform.position}};
-            var presenter = gameObject.AddComponent<FragmentPresenter>();
-            presenter.Inject(model);
-            return presenter;
-        }
 
 
     }
