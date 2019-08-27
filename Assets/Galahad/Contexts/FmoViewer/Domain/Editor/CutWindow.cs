@@ -1,5 +1,6 @@
 using Galahad.Contexts.FmoViewer.Domain.PdbAggregate;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
+using Galahad.Contexts.FmoViewer.Presenter;
 using UnityEditor;
 using UnityEditor.VersionControl;
 using UnityEngine;
@@ -15,9 +16,36 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
         private bool givenatom;
         private void OnGUI()
         {
+            if (Selection.gameObjects.Length>0)
+            {
+            foreach (var gameObject in Selection.gameObjects)
+            {
+                if (gameObject.CompareTag("Fragment"))
+                {
+                    var presenter = gameObject.GetComponent<FragmentPresenter>();
+                    var x = presenter.Model;
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField($"{x.FragmentId,6}"+$"{x.ResidueName,5}",GUILayout.Width(80));
+                    EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginVertical(GUI.skin.window);
+                        x.Atoms.ToList().ForEach(atom =>
+                        {
+                            if (atom.ElementSymbol==ElementSymbol.H)
+                            {
+                                return;
+                            }
+                            EditorGUILayout.BeginHorizontal();
+                            EditorGUILayout.LabelField($"{atom.AtomSerialNumber.ToString(),6}"+$"{atom.AtomName+atom.AlternateLocationIndicator.ToString(),5}",GUILayout.Width(100));
+                            atom.Select=EditorGUILayout.Toggle( atom.Select);
+                            EditorGUILayout.EndHorizontal();
+                        });
+                        EditorGUILayout.EndVertical();
+                }
+            }
+            }
             EditorGUILayout.LabelField("cut");
             Fragmentation =
-                EditorGUILayout.ObjectField(Fragmentation,typeof(Object))as FragmentationRepository ;
+                (FragmentationRepository) EditorGUILayout.ObjectField(Fragmentation,typeof(FragmentationRepository)) ;
             if (Fragmentation == null) return;
             scrol= EditorGUILayout.BeginScrollView(scrol,GUI.skin.box);
             Fragmentation.Fragment.FragmentAtoms.ToList().ForEach(x =>
