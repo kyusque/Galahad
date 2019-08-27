@@ -21,7 +21,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         [SerializeField] private float temperatureFactor;
         [SerializeField] private ElementSymbol elementSymbol;
         [SerializeField] private int formalCharge;
-        
+        [SerializeField] private bool select;
         
         public Atom(string atomSerialNumber, string atomName, string alternateLocationIndicator, string residueName,
             string chainId,string residueSequenceNumber ,string codeForInsertionOfResidues, string x, string y, string z, string occupancy, string temperatureFactor,
@@ -88,7 +88,13 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
         public  TemperatureFactor TemperatureFactor { get; set; }
         public  ElementSymbol ElementSymbol { get; set; }
         public FormalCharge FormalCharge { get; set; }
-public bool Select { get; set; }
+
+        public bool Select
+        {
+            get => select;
+            set => select = value;
+        }
+
         public void OnBeforeSerialize()
         {
             Name = AtomName.ToString();

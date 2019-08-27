@@ -256,7 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FragmentationRepository: {fileID: 11400000, guid: 7b6295612b235c3468be32c6e9b239e2,
     type: 2}
-  _atomColorPalette: {fileID: 11400000, guid: 10ba079e792dda44da745dca30a0f6ab, type: 2}
+  atomColorPalette: {fileID: 11400000, guid: 10ba079e792dda44da745dca30a0f6ab, type: 2}
+  eventAtomColorPalette: {fileID: 11400000, guid: 1ce4f672338dc4648b179af3a6d1300d,
+    type: 2}
   fmoBondColor: {fileID: 11400000, guid: dc613259f3921c243a1b4fabe727f362, type: 2}
   fmoMeshPreference: {fileID: 11400000, guid: f359bb88f01aa4425b2fe518508e14ca, type: 2}
 --- !u!1 &2124359405
