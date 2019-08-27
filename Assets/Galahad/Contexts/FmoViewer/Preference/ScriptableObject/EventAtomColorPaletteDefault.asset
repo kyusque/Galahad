@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 379d7e3150c55764991da478f2c76d24, type: 3}
+<<<<<<< HEAD
   m_Name: EventAtomColorPaletteDefault
   m_EditorClassIdentifier: 
   materials:
   - {fileID: 0}
   - {fileID: 2100000, guid: 8b004d813d9cc79498e5fccc73d9059a, type: 2}
   - {fileID: 2100000, guid: 8e6805a2472120a47b16d753e463c0f8, type: 2}
+=======
+  m_Name: EventAtomColorPalette
+  m_EditorClassIdentifier: 
+  materials: []
+>>>>>>> 4d93b47f06fd7afaff7b64001b84bc5b207dd74b
