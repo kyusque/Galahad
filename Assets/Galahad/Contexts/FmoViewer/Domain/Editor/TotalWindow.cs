@@ -1,7 +1,9 @@
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows;
+using Object = UnityEngine.Object;
 
 namespace Galahad.Contexts.FmoViewer.Domain.Editor
 {
@@ -24,14 +26,16 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
             {
                 var name = EditorUtility.SaveFilePanel("New Repository",
                     "/Assets/Galahad/FmoViewer/Domain/PdbRepository", "", "asset");
-                Debug.Log(Path.GetPathRoot(name));
-                Debug.Log(Path.GetFullPath(name));
-                Debug.Log(Path.GetFileNameWithoutExtension(name));
+                Debug.Log(Path.GetDirectoryName(name));
+                var n=name.LastIndexOf("Assets", StringComparison.Ordinal);
+                Debug.Log(name.Substring(0,n));
+                Debug.Log(name.Substring(n,name.Length-n));
                 Debug.Log(name);
                 if (name.Length>0)
                 {
                     var repository = CreateInstance<PdbRepository>();
-                    AssetDatabase.CreateAsset(repository,name);
+                    _pdbRepository = repository;
+                    AssetDatabase.CreateAsset(repository,name.Substring(n,name.Length-n));
                     AssetDatabase.Refresh();
                 }
                 

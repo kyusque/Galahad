@@ -52,8 +52,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
 
         public void OnBeforeSerialize()
         {
-            atoms = Atoms.ToList();
-            hetatms = Hetatms.ToList();
+            atoms = Atoms?.ToList()??new List<Atom>();
+            hetatms = Hetatms?.ToList()??new List<Hetatm>();
         }
 
         public void OnAfterDeserialize()
