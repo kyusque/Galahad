@@ -20,11 +20,7 @@ namespace Galahad.Contexts.FmoViewer.Presenter
             this.model = model;
             var o = gameObject;
             o.name = this.model.ResidueName;
-<<<<<<< HEAD
 //            o.tag = "Fragment";
-=======
-            o.tag = "Fragment";
->>>>>>> 4d93b47f06fd7afaff7b64001b84bc5b207dd74b
             this.ObserveEveryValueChanged(x => x.events)
                 .Where(x => x == Events.None)
                 .Subscribe(_ =>

@@ -27,11 +27,7 @@ namespace Galahad.Contexts.FmoViewer.Presenter
             this.gameObject.transform.position = model.Position.Value;
             GameObject o;
             (o = this.gameObject).name = atom.AtomName.ToString() + atom.AlternateLocationIndicator;
-<<<<<<< HEAD
 //            o.tag = "Atom";
-=======
-            o.tag = "Atom";
->>>>>>> 4d93b47f06fd7afaff7b64001b84bc5b207dd74b
             return this;
         }
         
