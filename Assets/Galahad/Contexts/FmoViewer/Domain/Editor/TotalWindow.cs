@@ -57,21 +57,30 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
             _pdbRepository = (PdbRepository) EditorGUILayout.ObjectField("PdbRepository", _pdbRepository, typeof(PdbRepository));
             if (_pdbRepository)
             {
-            if (GUILayout.Button("readpdb"))
-            {
-                _pdbRepository.ReadPdb(pdb);
-            }
-            if (GUILayout.Button("cut"))
-            {
-                _pdbRepository.Pdb.Atoms.ToList().ForEach(atom =>
+                if (GUILayout.Button("readpdb"))
                 {
-                
-                });
-            }
-            if (GUILayout.Button("test"))
-            {
-//            _pdbRepository.save();
-            }
+                    _pdbRepository.ReadPdb(pdb);
+                }
+                if (GUILayout.Button("cut"))
+                {
+                    _pdbRepository.AutoCut();
+                }
+                if (GUILayout.Button("residuecut"))
+                {
+                    if (_pdbRepository.Fragment.State.ResidueCut)
+                    {
+                        return;
+                    }
+                    _pdbRepository.NewAutoResidueCut();
+                }
+                if (GUILayout.Button("HETATM CUT"))
+                {
+                    
+                }
+                if (GUILayout.Button("AtomCut"))
+                {
+                    
+                }
             }
         }
     }

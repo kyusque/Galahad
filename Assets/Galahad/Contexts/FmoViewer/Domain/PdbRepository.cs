@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Galahad.Contexts.FmoViewer.Domain.PdbAggregate;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 using Debug = UnityEngine.Debug;
@@ -39,7 +40,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
                 }
             }
         }
-        public void NewAutoResidueCut(Pdb pdb)
+        public void AutoCut()
         {
             Fragment = null;
             Bonds=new Dictionary<int, Bonds>();
@@ -47,7 +48,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
             var fragmentAtoms=new FragmentAtoms();
             var fragmentHetatms = new FragmentHetatms();
             var fragmentBonds=new FragmentBonds();
-            var endAtoms = pdb.Atoms.GetEndOxAtoms();
+            var endAtoms = Pdb.Atoms.GetEndOxAtoms();
             Fragment=new Fragment(fragmentAtoms,fragmentHetatms,fragmentBonds);
             Fragment.State=new State();
             foreach (AtomName value in Enum.GetValues(typeof(AtomName)))
@@ -55,7 +56,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
                 switch (value)
                 {
                     case AtomName.CA:
-                        var ca = pdb.Atoms.Get(value);
+                        var ca = Pdb.Atoms.Get(value);
                         foreach (var atom in ca.ToList())
                         {
                             if (endAtoms.Exists(atom.ResidueSequencsNumber))
@@ -72,7 +73,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
                         }
                         break;
                     case AtomName.C:
-                        var c=pdb.Atoms.Get(value);
+                        var c=Pdb.Atoms.Get(value);
                         foreach (var atom in c.ToList())
                         {
                             if (endAtoms.Exists(atom.ResidueSequencsNumber))
@@ -91,7 +92,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
                         }
                         break;
                     case AtomName.O:
-                        foreach (var atom in pdb.Atoms.Get(value).ToList())
+                        foreach (var atom in Pdb.Atoms.Get(value).ToList())
                         {
                             if (endAtoms.Exists(atom.ResidueSequencsNumber))
                             {
@@ -104,9 +105,9 @@ namespace Galahad.Contexts.FmoViewer.Domain
                         }
                         break;
                     default:
-                        if (pdb.Atoms.Exists(value))
+                        if (Pdb.Atoms.Exists(value))
                         {
-                            foreach (var atom in pdb.Atoms.Get(value).ToList())
+                            foreach (var atom in Pdb.Atoms.Get(value).ToList())
                             {
                                 Fragment.FragmentAtoms[atom.ResidueSequencsNumber].Add(atom);
                             }
@@ -115,7 +116,7 @@ namespace Galahad.Contexts.FmoViewer.Domain
                 }
             }
 
-            foreach (var hetatm in pdb.Hetatms.ToList())
+            foreach (var hetatm in Pdb.Hetatms.ToList())
             {
                 if (Fragment.FragmentHetatms.Exists(hetatm.ResidueSequencsNumber)==false)
                 {
@@ -144,12 +145,6 @@ namespace Galahad.Contexts.FmoViewer.Domain
         
         public void Save(string templeteajf)
         {
-//        System.Diagnostics.Process.Start(@"C:","/select,");
-////        System.Diagnostics.Process.Start()
-//        using (var myProcess = new Process())
-//        {
-//            EditorUtility.SaveFilePanel("","","","")
-//        }
             var path = EditorUtility.SaveFilePanel("save ajf", "", "", "ajf");
             if (path.Length <= 0) return;
             var pat = Path.GetFileNameWithoutExtension(path);

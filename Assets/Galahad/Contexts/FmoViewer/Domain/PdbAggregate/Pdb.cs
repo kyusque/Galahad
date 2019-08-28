@@ -66,7 +66,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.PdbAggregate
     public enum RecordName
     {
         ATOM,
-        HETATM
+        HETATM,
+        SSBOND
         
     }
 }
