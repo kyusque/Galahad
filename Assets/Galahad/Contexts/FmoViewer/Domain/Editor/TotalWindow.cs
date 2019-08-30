@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows;
@@ -12,6 +13,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
         private Object _pdb;
         private string pdb;
         private PdbRepository _pdbRepository;
+        private Vector2 scrolhetatm,scrolatom,scroldelete;
+        private int hetatmCut,atomCut;
         [MenuItem("Editor/totalwindow")]
         public static void Init()
         {
@@ -28,9 +31,6 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
                     "/Assets/Galahad/FmoViewer/Domain/PdbRepository", "", "asset");
                 Debug.Log(Path.GetDirectoryName(name));
                 var n=name.LastIndexOf("Assets", StringComparison.Ordinal);
-                Debug.Log(name.Substring(0,n));
-                Debug.Log(name.Substring(n,name.Length-n));
-                Debug.Log(name);
                 if (name.Length>0)
                 {
                     var repository = CreateInstance<PdbRepository>();
@@ -73,14 +73,111 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
                     }
                     _pdbRepository.NewAutoResidueCut();
                 }
-                if (GUILayout.Button("HETATM CUT"))
+
+                using (new GUILayout.HorizontalScope())
+                {
+                hetatmCut = GUILayout.Toolbar (hetatmCut, new string[]{ "hetemcut", "atomcut", "delete atom" });
+                }
+                if (hetatmCut==0)
                 {
                     
+                    scrolhetatm= EditorGUILayout.BeginScrollView(scrolhetatm,GUI.skin.box);
+                    _pdbRepository.Fragment.FragmentHetatms.ToList().ForEach(x =>
+                    {
+                        x.Init();
+                        EditorGUILayout.BeginHorizontal();
+                        EditorGUILayout.LabelField($"{x.FragmentId.ToString(),6}"+$"{x.Name,5}",GUILayout.Width(80));
+                        x.Select = EditorGUILayout.Toggle( x.Select);
+                        EditorGUILayout.EndHorizontal();
+                        if (x.Select)
+                        {
+                            EditorGUILayout.BeginVertical(GUI.skin.window);
+                            EditorGUILayout.LabelField("choose give atom");
+                            x.Hetatms.ToList().ForEach(atom =>
+                            {
+                                if (atom.ElementSymbol==ElementSymbol.H)
+                                {
+                                    return;
+                                }
+                                EditorGUILayout.BeginHorizontal();
+                                EditorGUILayout.LabelField($"{atom.AtomSerialNumber.ToString(),6}"+$"{atom.AtomName+atom.AlternateLocationIndicator.ToString(),5}",GUILayout.Width(100));
+                                atom.Select=EditorGUILayout.Toggle( atom.Select);
+                                EditorGUILayout.EndHorizontal();
+                            });
+                            EditorGUILayout.EndVertical();
+                        }
+                    });           
+                    EditorGUILayout.EndScrollView();
                 }
-                if (GUILayout.Button("AtomCut"))
+                 if (hetatmCut==1)
                 {
-                    
+                    scrolatom= EditorGUILayout.BeginScrollView(scrolatom,GUI.skin.box);
+                   _pdbRepository.Fragment.FragmentAtoms.ToList().ForEach(x =>
+                    {
+                        x.Init();
+                        EditorGUILayout.BeginHorizontal();
+                        EditorGUILayout.LabelField($"{x.FragmentId.ToString(),6}"+$"{x.ResidueName,5}",GUILayout.Width(80));
+                        x.Select = EditorGUILayout.Toggle( x.Select);
+                        EditorGUILayout.EndHorizontal();
+                        if (x.Select)
+                        {
+                            EditorGUILayout.BeginVertical(GUI.skin.window);
+                            x.Atoms.ToList().ForEach(atom =>
+                            {
+                                if (atom.ElementSymbol==ElementSymbol.H)
+                                {
+                                    return;
+                                }
+                                EditorGUILayout.BeginHorizontal();
+                                EditorGUILayout.LabelField($"{atom.AtomSerialNumber.ToString(),6}"+$"{atom.AtomName+atom.AlternateLocationIndicator.ToString(),5}",GUILayout.Width(100));
+                                atom.Select=EditorGUILayout.Toggle( atom.Select);
+                                EditorGUILayout.EndHorizontal();
+                            });
+                            EditorGUILayout.EndVertical();
+                        }
+                    });
+                   EditorGUILayout.EndScrollView();
                 }
+
+                 if (hetatmCut==2)
+                 {
+                     scroldelete= EditorGUILayout.BeginScrollView(scroldelete,GUI.skin.box);
+                     _pdbRepository.Fragment.FragmentAtoms.ToList().ForEach(x =>
+                     {
+                         x.Init();
+                         EditorGUILayout.BeginHorizontal();
+                         EditorGUILayout.LabelField($"{x.FragmentId.ToString(),6}"+$"{x.ResidueName,5}",GUILayout.Width(80));
+                         x.Select = EditorGUILayout.Toggle( x.Select);
+                         EditorGUILayout.EndHorizontal();
+                         if (x.Select)
+                         {
+                             EditorGUILayout.BeginVertical(GUI.skin.window);
+                             x.Atoms.ToList().ForEach(atom =>
+                             {
+                                 if (atom.ElementSymbol==ElementSymbol.H)
+                                 {
+                                     return;
+                                 }
+                                 EditorGUILayout.BeginHorizontal();
+                                 EditorGUILayout.LabelField($"{atom.AtomSerialNumber.ToString(),6}"+$"{atom.AtomName+atom.AlternateLocationIndicator.ToString(),5}",GUILayout.Width(100));
+                                 atom.Select=EditorGUILayout.Toggle(atom.Select);
+                                 if (atom.Select)
+                                 {
+                                     if (GUILayout.Button("delete")&&EditorUtility.DisplayDialog("delete Atom ??", "Are you really delete Atom?",
+                                             "delete","no"))
+                                     {
+                                         atom.Select = false;
+                                         x.Atoms.Remove(atom);
+                                         return;
+                                     }
+                                 }
+                                 EditorGUILayout.EndHorizontal();
+                             });
+                             EditorGUILayout.EndVertical();
+                         }
+                     });
+                         EditorGUILayout.EndScrollView();
+                 }
             }
         }
     }
