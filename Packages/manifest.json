@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.modesttree.zenject": "https://github.com/MeikelLP/Zenject.git#upm",
     "com.unity.ads": "2.0.8",
     "com.unity.analytics": "3.3.2",
     "com.unity.collab-proxy": "1.2.16",
@@ -40,5 +41,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.modesttree.zenject": {
+      "hash": "de07abe90babdb1ff7f3945652890dcd3493edf9",
+      "revision": "upm"
+    }
   }
 }
