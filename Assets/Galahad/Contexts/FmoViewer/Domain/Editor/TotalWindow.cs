@@ -4,6 +4,7 @@ using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows;
+using Directory = System.IO.Directory;
 using Object = UnityEngine.Object;
 
 namespace Galahad.Contexts.FmoViewer.Domain.Editor
@@ -15,6 +16,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
         private PdbRepository _pdbRepository;
         private Vector2 scrolhetatm,scrolatom,scroldelete;
         private int hetatmCut,atomCut;
+        private string[] templates;
         [MenuItem("Editor/totalwindow")]
         public static void Init()
         {
@@ -72,6 +74,17 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
                         return;
                     }
                     _pdbRepository.NewAutoResidueCut();
+                }
+
+                templates = Directory.GetDirectories("Assets/Galahad/Contexts/FmoViewer/Data/templates");
+                if (EditorGUILayout.DropdownButton(new GUIContent("templetes") ,FocusType.Passive))
+                {
+                    PopupWindow.Show(GUILayoutUtility.GetRect(0,0),new TempletePopUp());
+                }
+                
+                if (GUILayout.Button(""))
+                {
+                    _pdbRepository.Save();
                 }
 
                 using (new GUILayout.HorizontalScope())
