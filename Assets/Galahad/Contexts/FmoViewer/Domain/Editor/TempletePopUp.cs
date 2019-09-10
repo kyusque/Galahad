@@ -1,3 +1,4 @@
+using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEditor;
@@ -22,6 +23,8 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
                 var singleLineHeight = EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
                 // タイトル部分
                 height += singleLineHeight;
+                var directory= Directory.GetDirectories("Assets/Galahad/Contexts/FmoViewer/Data/templates");
+                var templates=BuildEnum()
                 // ボタン部分
                 height += System.Enum.GetValues(typeof(MenuType)).Length * singleLineHeight;
                 // 最下部の余白
@@ -37,12 +40,26 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
         public override Vector2 GetWindowSize() => new Vector2(WindowWidth, WindowHeight);
         public override void OnGUI(Rect rect)
         {
-            
+            var fieldRect = rect;
+            fieldRect.height = EditorGUIUtility.singleLineHeight;
+
+            // タイトルを描画
+            GUI.Label(fieldRect, "Debug Menu", EditorStyles.boldLabel);
+            fieldRect.y += EditorGUIUtility.singleLineHeight;
+            fieldRect.y += EditorGUIUtility.standardVerticalSpacing;
+        
+            // ボタンを描画
+            fieldRect.xMin += 8;
+            fieldRect.xMax -= 8;
+            foreach (MenuType type in System.Enum.GetValues(typeof(MenuType))) {
+                GUI.Button(fieldRect, type.ToString());
+                fieldRect.y += EditorGUIUtility.singleLineHeight;
+                fieldRect.y += EditorGUIUtility.standardVerticalSpacing;
+            }
         }
 
         static System.Type BuildEnum(string[] strings)
         {
-            AssemblyName assemblyName=new AssemblyName{Name = "myAssembly"};
             AssemblyName asmName = new AssemblyName{ Name = "MyAssembly" };
             System.AppDomain domain = System.AppDomain.CurrentDomain;
             AssemblyBuilder asmBuilder = domain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Run);
