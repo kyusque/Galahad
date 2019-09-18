@@ -34,8 +34,7 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("cut"))
             {
-                var window= EditorWindow.GetWindow<CutWindow>();
-                window.Fragment=fragmentationRepository.Fragment;
+                var window= EditorWindow.GetWindow<CutWindow>().Inject(fragmentationRepository);
             }
             EditorGUILayout.EndHorizontal();
             Templete = EditorGUILayout.ObjectField("templete",Templete, typeof(Object));

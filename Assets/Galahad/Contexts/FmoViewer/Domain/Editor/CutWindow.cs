@@ -1,5 +1,7 @@
+using System;
 using Galahad.Contexts.FmoViewer.Domain.PdbAggregate;
 using Galahad.Contexts.FmoViewer.Domain.ValueObjects;
+using Galahad.Contexts.FmoViewer.Event;
 using Galahad.Contexts.FmoViewer.Presenter;
 using UnityEditor;
 using UnityEditor.VersionControl;
@@ -9,40 +11,112 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
 {
     public class CutWindow:EditorWindow
     {
-        public FragmentationRepository Fragmentation;
-        public Fragment Fragment;
-        private Vector2 scrol;
+        private FragmentationRepository Fragmentation;
+        private PdbRepository _pdbRepository;
+        private Vector2 scrol,cutscrol;
         private bool giveatom;
         private bool givenatom;
         private void OnGUI()
         {
             if (Selection.gameObjects.Length>0)
             {
-            foreach (var gameObject in Selection.gameObjects)
-            {
-                if (gameObject.CompareTag("Fragment"))
+                foreach (var gameObject in Selection.gameObjects)
                 {
-                    var presenter = gameObject.GetComponent<FragmentPresenter>();
-                    var x = presenter.Model;
-                    EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField($"{x.FragmentId,6}"+$"{x.ResidueName,5}",GUILayout.Width(80));
-                    EditorGUILayout.EndHorizontal();
-                        EditorGUILayout.BeginVertical(GUI.skin.window);
-                        x.Atoms.ToList().ForEach(atom =>
-                        {
-                            if (atom.ElementSymbol==ElementSymbol.H)
-                            {
-                                return;
-                            }
+                    if (gameObject.name.Length<3)
+                    {
+                        continue;
+                    }
+                    switch (gameObject.name.Substring(0,3))
+                    {
+                        case  "LYS":
+                        case " VAL" :
+                        case "PHE":
+                        case " GLY":
+                        case "ARG":
+                        case" CYS":
+                        case" GLU":
+                        case "LEU":
+                        case "ALA":
+                        case "MET":
+                        case" HIS":
+                        case "ASP":
+                        case "ASN":
+                        case "TYR":
+                        case "SER":
+                        case "TRP":
+                        case "THR":
+                        case "GLN":
+                        case "ILE":
+                        case "PRO":
+                        case "CANULL":
+                            var presenter= gameObject.GetComponent<FragmentPresenter>();
+                            var x = presenter.Model;
+                            var atompresenters = presenter.GetComponentsInChildren<AtomPresenter>();
                             EditorGUILayout.BeginHorizontal();
-                            EditorGUILayout.LabelField($"{atom.AtomSerialNumber.ToString(),6}"+$"{atom.AtomName+atom.AlternateLocationIndicator.ToString(),5}",GUILayout.Width(100));
-                            atom.Select=EditorGUILayout.Toggle( atom.Select);
+                            EditorGUILayout.LabelField($"{x.FragmentId,6}"+$"{x.ResidueName,5}",GUILayout.Width(80));
+                            if (GUILayout.Button("cut"))
+                            {
+                                if (EditorUtility.DisplayDialog("cut","Do you want cut?","cut" ,"no"))
+                                {
+                                    
+                                }
+                            }
                             EditorGUILayout.EndHorizontal();
-                        });
-                        EditorGUILayout.EndVertical();
+                            cutscrol= EditorGUILayout.BeginScrollView(cutscrol,GUI.skin.box);
+                            EditorGUILayout.BeginVertical(GUI.skin.box);
+                            foreach (var atomPresenter in atompresenters)
+                            {
+//                                if(atomPresenter.Model.ElementSymbol==ElementSymbol.H) continue;
+                                
+                                EditorGUILayout.BeginHorizontal();
+                                EditorGUILayout.LabelField($"{atomPresenter.Model.AtomSerialNumber.ToString(),6}"+$"{atomPresenter.Model.AtomName+atomPresenter.Model.AlternateLocationIndicator.ToString(),5}",GUILayout.Width(100));
+                                
+                                atomPresenter.Events = (Events) EditorGUILayout.EnumPopup("atom:", atomPresenter.Events);
+                                var oo = EditorGUILayout.Toggle(atomPresenter.Events == Events.AtomSelect||atomPresenter.Events==Events.GetAtom||atomPresenter.Events==Events.GiveAtom);
+                                if (oo&&atomPresenter.Events==Events.GetAtom)
+                                {
+                                    atomPresenter.Events = Events.GetAtom;
+                                }
+                                else if(oo==false&&atomPresenter.Events==Events.GiveAtom)
+                                {
+                                    
+                                    atomPresenter.Events = Events.GiveAtom;
+                                }
+                                else if(oo)
+                                {
+                                    
+                                    atomPresenter.Events = Events.AtomSelect;
+                                }
+                                else
+                                {
+                                    atomPresenter.Events = Events.None;
+                                }
+                                EditorGUILayout.EndHorizontal();
+                            }
+                            x.Atoms.ToList().ForEach(atom =>
+                            {
+                            
+                                if (atom.ElementSymbol==ElementSymbol.H)
+                                {
+                                    return;
+                                }
+                                EditorGUILayout.BeginHorizontal();
+                                EditorGUILayout.LabelField($"{atom.AtomSerialNumber.ToString(),6}"+$"{atom.AtomName+atom.AlternateLocationIndicator.ToString(),5}",GUILayout.Width(100));
+                                atom.Select=EditorGUILayout.Toggle( atom.Select);
+                                EditorGUILayout.EndHorizontal();
+                            });
+                            EditorGUILayout.EndVertical();
+                            EditorGUILayout.EndScrollView();
+                            break;
+                    }
                 }
             }
+
+            if (_pdbRepository!=null)
+            {
+                
             }
+
             EditorGUILayout.LabelField("cut");
             Fragmentation =
                 (FragmentationRepository) EditorGUILayout.ObjectField(Fragmentation,typeof(FragmentationRepository)) ;
@@ -98,6 +172,17 @@ namespace Galahad.Contexts.FmoViewer.Domain.Editor
                 }
             });
             EditorGUILayout.EndScrollView();
+        }
+
+        public void Inject(PdbRepository pdbRepository)
+        {
+            _pdbRepository = pdbRepository;
+        }
+
+        public CutWindow Inject(FragmentationRepository fragmentationRepository)
+        {
+            Fragmentation = fragmentationRepository;
+            return this;
         }
     }
 }
