@@ -1,5 +1,5 @@
 {
-  "name": "dev.kyusque.galahad-visualizer",
+  "name": "dev.kyusque.galahad",
   "dependencies": {
     "com.unity.textmeshpro": "^2.0.1"
   },
