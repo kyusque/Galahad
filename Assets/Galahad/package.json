@@ -1,0 +1,15 @@
+{
+  "name": "com.kyusque.galahad",
+  "displayName": "Galahad",
+  "version": "0.0.1",
+  "unity": "2019.1",
+  "description": "Molecule visualizer",
+  "keywords": [
+    "molecule",
+    "unity"
+  ],
+  "dependencies": {
+    "com.unity.textmeshpro": "^2.0.1"
+  },
+  "category": "Unity"
+}
