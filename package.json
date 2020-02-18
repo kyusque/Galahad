@@ -1,13 +1,15 @@
 {
-  "name": "dev.kyusque.galahad.test",
+  "name": "dev.kyusque.galahad-visualizer",
   "dependencies": {
+    "com.unity.textmeshpro": "^2.0.1"
   },
   "version": "0.0.1",
   "unity": "2019.1",
-  "displayName": "Galahad test",
-  "description": "",
+  "displayName": "Galahad",
+  "description": "Molecule Visualizer",
   "keywords": [
-    "unity"
+    "unity",
+    "molecule"
   ],
-  "readme": "test test test"
+  "readme": ""
 }
