@@ -1,0 +1,13 @@
+{
+  "name": "dev.kyusque.galahad.test",
+  "dependencies": {
+  },
+  "version": "0.0.1",
+  "unity": "2018.1",
+  "displayName": "Galahad test",
+  "description": "",
+  "keywords": [
+    "unity"
+  ],
+  "readme": "test test test"
+}
