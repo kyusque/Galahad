@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Galahad.Contexts.MoleculeViewer.Domain.ValueObject;
+using Galahad.Domain.ValueObject;
 using UnityEngine;
 
 namespace Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate
 {
     [Serializable]
-    public class Molecule : ISerializationCallbackReceiver
+    public class Molecule
     {
-        [SerializeField] private List<Atom> atoms;
-        [SerializeField] private List<Bond> bonds;
+        [SerializeField] private Offset offset = new Offset();
+        [SerializeField] private List<Atom> atoms = new List<Atom>();
+        [SerializeField] private List<Bond> bonds = new List<Bond>();
         [SerializeField] private string identifier;
-        [SerializeField] private Vector3 offsetPosition;
         [SerializeField] private string title;
 
         public Molecule(Atoms atoms, Bonds bonds, Position offsetPosition, string title)
@@ -19,7 +20,6 @@ namespace Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate
             Atoms = atoms;
             Bonds = bonds;
             Identifier = Guid.NewGuid().ToString();
-            OffsetPosition = offsetPosition;
             Title = title;
         }
 
@@ -30,22 +30,5 @@ namespace Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate
         public Atoms Atoms { get; private set; }
         public Bonds Bonds { get; private set; }
 
-        public void OnBeforeSerialize()
-        {
-            identifier = Identifier;
-            title = Title;
-            atoms = Atoms?.ToList();
-            bonds = Bonds?.ToList();
-            offsetPosition = OffsetPosition?.Value ?? Vector3.zero;
-        }
-
-        public void OnAfterDeserialize()
-        {
-            Identifier = identifier ?? Guid.NewGuid().ToString();
-            Title = title;
-            Atoms = new Atoms(atoms);
-            Bonds = new Bonds(bonds);
-            OffsetPosition = new Position(offsetPosition);
-        }
     }
 }
