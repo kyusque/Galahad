@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   molecules:
   - atoms:
-    - atomicNumber: 8
+    - atomicNumber: 1
       atomIndex: 0
       formalCharge: 0
       position: {x: 0, y: 0, z: 0}
@@ -22,20 +22,12 @@ MonoBehaviour:
       atomIndex: 1
       formalCharge: 0
       position: {x: 1, y: 0, z: 0}
-    - atomicNumber: 1
-      atomIndex: 2
-      formalCharge: 0
-      position: {x: 0, y: 1, z: 0}
     bonds:
     - beginAtomIndex: 0
       bondIndex: 0
       bondOrder: 1
       endAtomIndex: 1
-    - beginAtomIndex: 0
-      bondIndex: 1
-      bondOrder: 1
-      endAtomIndex: 2
-    identifier: 505fca9a-592c-46a9-a4fa-cb96036cd50a
+    identifier: 
     offsetPosition: {x: 0, y: 0, z: 0}
-    title: water
+    title: 
   runtimeJson: 

@@ -2,13 +2,12 @@ using System.Collections;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Networking;
-using Zenject;
 
 namespace Galahad.Scripts
 {
     public class MoleculeUpdateService : MonoBehaviour
     {
-        [Inject] private MoleculeRepository _moleculeRepository;
+        [SerializeField] private MoleculeRepository _moleculeRepository;
         [SerializeField] private string currentJson;
         [SerializeField] private float interval;
         [SerializeField] private string url = "http://0.0.0.0:8080";
