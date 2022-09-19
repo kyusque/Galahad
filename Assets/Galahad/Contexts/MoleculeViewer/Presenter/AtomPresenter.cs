@@ -1,5 +1,4 @@
 using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
-using UniRx;
 using UnityEngine;
 using TMPro;
 
@@ -13,12 +12,21 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
         public void Init()
         {
             InitChargeInfo();
-            this.ObserveEveryValueChanged(_ => model.FormalCharge.Value)
-                .Subscribe(x => { chargeInfo.text = x == 0 ? "" : x.ToString(); })
-                .AddTo(this);
+            transform.localPosition = model.Position.Value;
+            chargeInfo.text = model.FormalCharge.Value == 0 ? "" : model.FormalCharge.Value.ToString();
+        }
 
-            this.ObserveEveryValueChanged(_ => model.Position.Value)
-                .Subscribe(x => { transform.localPosition = x; }).AddTo(this);
+        private void Update()
+        {
+            if (transform.localPosition != model.Position.Value)
+            {
+                transform.localPosition = model.Position.Value;
+            }
+
+            if (chargeInfo.text != model.FormalCharge.Value.ToString())
+            {
+                chargeInfo.text = model.FormalCharge.Value == 0 ? "" : model.FormalCharge.Value.ToString();
+            }
         }
 
         private void InitChargeInfo()
