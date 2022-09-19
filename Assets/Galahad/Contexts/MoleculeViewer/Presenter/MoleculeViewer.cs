@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using Galahad.Scripts;
-using UniRx;
 using UnityEngine;
 
 namespace Galahad.Contexts.MoleculeViewer.Presenter
@@ -15,6 +14,8 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
         [SerializeField] public MoleculePresenter moleculePrefab;
         [SerializeField] private List<Molecule> molecules;
         public int n;
+        private MoleculePresenter moleculePresenter;
+        private int tempN;
 
 
         public void OnBeforeSerialize()
@@ -30,21 +31,30 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
         private void Start()
         {
             molecules = _moleculeRepository.ToList();
-            MoleculePresenter moleculePresenter = null;
-            this.ObserveEveryValueChanged(_ => n)
-                .Subscribe(x =>
-                {
-                    if (moleculePresenter != null)
-                        Destroy(moleculePresenter);
+            ChangeMolecule();
+        }
 
-                    var mol = _moleculeRepository.GetMolecule(x);
-                    moleculePresenter = Instantiate(moleculePrefab, transform);
-                    moleculePresenter.molecule = mol;
-                    moleculePresenter.atomPrefab = atomPrefab;
-                    moleculePresenter.bondPrefab = bondPrefab;
-                    moleculePresenter.atomColorPalette = atomColorPalette;
-                    moleculePresenter.Init();
-                }).AddTo(this);
+        private void Update()
+        {
+            if (tempN != n)
+            {
+                ChangeMolecule();
+            }
+        }
+
+        private void ChangeMolecule()
+        {
+            tempN = n;
+            if (moleculePresenter != null)
+                Destroy(moleculePresenter);
+
+            var mol = _moleculeRepository.GetMolecule(n);
+            moleculePresenter = Instantiate(moleculePrefab, transform);
+            moleculePresenter.molecule = mol;
+            moleculePresenter.atomPrefab = atomPrefab;
+            moleculePresenter.bondPrefab = bondPrefab;
+            moleculePresenter.atomColorPalette = atomColorPalette;
+            moleculePresenter.Init();
         }
     }
 }

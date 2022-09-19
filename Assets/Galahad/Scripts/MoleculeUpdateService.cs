@@ -1,5 +1,4 @@
 using System.Collections;
-using UniRx;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -11,16 +10,23 @@ namespace Galahad.Scripts
         [SerializeField] private string currentJson;
         [SerializeField] private float interval;
         [SerializeField] private string url = "http://0.0.0.0:8080";
+        private string tempJson;
 
         private void Start()
         {
             StartCoroutine(GetMoleculeJsonFromHttp(url, interval));
-            this.ObserveEveryValueChanged(_ => currentJson)
-                .Subscribe(x =>
-                {
-                    _moleculeRepository.UpdateRuntimeMoleculeFromJson(currentJson);
-                    Debug.Log(currentJson);
-                }).AddTo(this);
+            tempJson = currentJson;
+            _moleculeRepository.UpdateRuntimeMoleculeFromJson(currentJson);
+            Debug.Log(currentJson);
+        }
+
+        private void Update()
+        {
+            if (tempJson != currentJson)
+            {
+                _moleculeRepository.UpdateRuntimeMoleculeFromJson(currentJson);
+                Debug.Log(currentJson);
+            }
         }
 
 

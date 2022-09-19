@@ -1,7 +1,6 @@
 using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using Galahad.Contexts.MoleculeViewer.Domain.ValueObject;
 using Galahad.Scripts;
-using UniRx;
 using UnityEngine;
 
 namespace Galahad.Contexts.MoleculeViewer.Presenter
@@ -15,8 +14,7 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
 
         public void Init()
         {
-            this.ObserveEveryValueChanged(_ => molecule.OffsetPosition.Value)
-                .Subscribe(x => { transform.localPosition = x; }).AddTo(this);
+            transform.localPosition = molecule.OffsetPosition.Value;
 
             molecule.Atoms.ToList().ForEach(x =>
             {
@@ -36,6 +34,14 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
                 bond.EndAtom = molecule.Atoms[x.EndAtomIndex];
                 bond.Init();
             });
+        }
+
+        private void Update()
+        {
+            if (transform.localPosition != molecule.OffsetPosition.Value)
+            {
+                transform.localPosition = molecule.OffsetPosition.Value;
+            }
         }
     }
 }
