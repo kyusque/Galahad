@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c409ef2b4713e4519a94df19a33d95c0, type: 3}
+  m_Name: esai
+  m_EditorClassIdentifier: 
+  molecules:
+  - atoms:
+    - atomicNumber: 6
+      atomIndex: 0
+      formalCharge: 0
+      position: {x: 2.4711208, y: -0.42546383, z: -0.14735618}
+    - atomicNumber: 6
+      atomIndex: 1
+      formalCharge: 0
+      position: {x: 1.2301669, y: 0.39821687, z: -0.1784858}
+    - atomicNumber: 6
+      atomIndex: 2
+      formalCharge: 0
+      position: {x: -0.017198693, y: -0.4123302, z: 0.20458047}
+    - atomicNumber: 6
+      atomIndex: 3
+      formalCharge: 0
+      position: {x: -1.1593621, y: 0.5528487, z: 0.12353183}
+    - atomicNumber: 6
+      atomIndex: 4
+      formalCharge: 0
+      position: {x: -2.4893346, y: -0.07496591, z: 0.4721963}
+    - atomicNumber: 1
+      atomIndex: 5
+      formalCharge: 0
+      position: {x: 2.4443924, y: -1.1003705, z: 0.7106913}
+    - atomicNumber: 1
+      atomIndex: 6
+      formalCharge: 0
+      position: {x: 2.5771508, y: -0.9345792, z: -1.1287616}
+    - atomicNumber: 1
+      atomIndex: 7
+      formalCharge: 0
+      position: {x: 3.336641, y: 0.25507283, z: -0.0018846949}
+    - atomicNumber: 1
+      atomIndex: 8
+      formalCharge: 0
+      position: {x: 1.2391336, y: 1.2605209, z: 0.51603895}
+    - atomicNumber: 1
+      atomIndex: 9
+      formalCharge: 0
+      position: {x: 1.0429146, y: 0.78194344, z: -1.1831028}
+    - atomicNumber: 1
+      atomIndex: 10
+      formalCharge: 0
+      position: {x: 0.108570136, y: -0.87341356, z: 1.1992857}
+    - atomicNumber: 1
+      atomIndex: 11
+      formalCharge: 0
+      position: {x: -0.10627437, y: -1.1897079, z: -0.58961296}
+    - atomicNumber: 1
+      atomIndex: 12
+      formalCharge: 0
+      position: {x: -1.1988102, y: 0.93801767, z: -0.9144693}
+    - atomicNumber: 1
+      atomIndex: 13
+      formalCharge: 0
+      position: {x: -0.9787636, y: 1.3490335, z: 0.8744418}
+    - atomicNumber: 1
+      atomIndex: 14
+      formalCharge: 0
+      position: {x: -3.2504532, y: 0.74759346, z: 0.3726422}
+    - atomicNumber: 1
+      atomIndex: 15
+      formalCharge: 0
+      position: {x: -2.5148065, y: -0.46034107, z: 1.487431}
+    - atomicNumber: 1
+      atomIndex: 16
+      formalCharge: 0
+      position: {x: -2.735087, y: -0.81207526, z: -0.2920821}
+    bonds:
+    - beginAtomIndex: 0
+      bondIndex: 0
+      bondOrder: 1
+      endAtomIndex: 1
+    - beginAtomIndex: 1
+      bondIndex: 1
+      bondOrder: 1
+      endAtomIndex: 2
+    - beginAtomIndex: 2
+      bondIndex: 2
+      bondOrder: 1
+      endAtomIndex: 3
+    - beginAtomIndex: 3
+      bondIndex: 3
+      bondOrder: 1
+      endAtomIndex: 4
+    - beginAtomIndex: 0
+      bondIndex: 4
+      bondOrder: 1
+      endAtomIndex: 5
+    - beginAtomIndex: 0
+      bondIndex: 5
+      bondOrder: 1
+      endAtomIndex: 6
+    - beginAtomIndex: 0
+      bondIndex: 6
+      bondOrder: 1
+      endAtomIndex: 7
+    - beginAtomIndex: 1
+      bondIndex: 7
+      bondOrder: 1
+      endAtomIndex: 8
+    - beginAtomIndex: 1
+      bondIndex: 8
+      bondOrder: 1
+      endAtomIndex: 9
+    - beginAtomIndex: 2
+      bondIndex: 9
+      bondOrder: 1
+      endAtomIndex: 10
+    - beginAtomIndex: 2
+      bondIndex: 10
+      bondOrder: 1
+      endAtomIndex: 11
+    - beginAtomIndex: 3
+      bondIndex: 11
+      bondOrder: 1
+      endAtomIndex: 12
+    - beginAtomIndex: 3
+      bondIndex: 12
+      bondOrder: 1
+      endAtomIndex: 13
+    - beginAtomIndex: 4
+      bondIndex: 13
+      bondOrder: 1
+      endAtomIndex: 14
+    - beginAtomIndex: 4
+      bondIndex: 14
+      bondOrder: 1
+      endAtomIndex: 15
+    - beginAtomIndex: 4
+      bondIndex: 15
+      bondOrder: 1
+      endAtomIndex: 16
+    identifier: 7a97932f-d8e1-41c4-80d3-b923b73f5364
+    offsetPosition: {x: 0, y: 0, z: 0}
+    title: test
+  runtimeJson: 
