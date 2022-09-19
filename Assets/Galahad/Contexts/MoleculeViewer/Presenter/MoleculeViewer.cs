@@ -1,16 +1,14 @@
 using System.Collections.Generic;
-using Galahad.Contexts.MoleculeViewer.Domain;
 using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using Galahad.Scripts;
 using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace Galahad.Contexts.MoleculeViewer.Presenter
 {
     public class MoleculeViewer : MonoBehaviour, ISerializationCallbackReceiver
     {
-        private IMoleculeRepository _moleculeRepository;
+        [SerializeField] private MoleculeRepository _moleculeRepository;
         [SerializeField] public AtomColorPalette atomColorPalette;
         [SerializeField] public AtomPresenter atomPrefab;
         [SerializeField] public BondPresenter bondPrefab;
@@ -31,6 +29,7 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
 
         private void Start()
         {
+            molecules = _moleculeRepository.ToList();
             MoleculePresenter moleculePresenter = null;
             this.ObserveEveryValueChanged(_ => n)
                 .Subscribe(x =>
@@ -46,28 +45,6 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
                     moleculePresenter.atomColorPalette = atomColorPalette;
                     moleculePresenter.Init();
                 }).AddTo(this);
-        }
-
-        [Inject]
-        public void Inject(MoleculeRepository moleculeRepository)
-        {
-            _moleculeRepository = moleculeRepository;
-            molecules = _moleculeRepository.ToList();
-        }
-
-        public void Inject(AtomPresenter atomPrefab)
-        {
-            this.atomPrefab = atomPrefab;
-        }
-
-        public void Inject(MoleculePresenter moleculePrefab)
-        {
-            this.moleculePrefab = moleculePrefab;
-        }
-
-        public void Inject(BondPresenter bondPrefab)
-        {
-            this.bondPrefab = bondPrefab;
         }
     }
 }
