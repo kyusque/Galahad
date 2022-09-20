@@ -1,22 +1,21 @@
 using System.Collections.Generic;
-using Galahad.Contexts.MoleculeViewer.Domain;
 using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using Galahad.Scripts;
-using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace Galahad.Contexts.MoleculeViewer.Presenter
 {
     public class MoleculeViewer : MonoBehaviour, ISerializationCallbackReceiver
     {
-        private IMoleculeRepository _moleculeRepository;
+        [SerializeField] private MoleculeRepository _moleculeRepository;
         [SerializeField] public AtomColorPalette atomColorPalette;
         [SerializeField] public AtomPresenter atomPrefab;
         [SerializeField] public BondPresenter bondPrefab;
         [SerializeField] public MoleculePresenter moleculePrefab;
         [SerializeField] private List<Molecule> molecules;
         public int n;
+        private MoleculePresenter moleculePresenter;
+        private int tempN;
 
 
         public void OnBeforeSerialize()
@@ -31,43 +30,31 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
 
         private void Start()
         {
-            MoleculePresenter moleculePresenter = null;
-            this.ObserveEveryValueChanged(_ => n)
-                .Subscribe(x =>
-                {
-                    if (moleculePresenter != null)
-                        Destroy(moleculePresenter);
-
-                    var mol = _moleculeRepository.GetMolecule(x);
-                    moleculePresenter = Instantiate(moleculePrefab, transform);
-                    moleculePresenter.molecule = mol;
-                    moleculePresenter.atomPrefab = atomPrefab;
-                    moleculePresenter.bondPrefab = bondPrefab;
-                    moleculePresenter.atomColorPalette = atomColorPalette;
-                    moleculePresenter.Init();
-                }).AddTo(this);
-        }
-
-        [Inject]
-        public void Inject(MoleculeRepository moleculeRepository)
-        {
-            _moleculeRepository = moleculeRepository;
             molecules = _moleculeRepository.ToList();
+            ChangeMolecule();
         }
 
-        public void Inject(AtomPresenter atomPrefab)
+        private void Update()
         {
-            this.atomPrefab = atomPrefab;
+            if (tempN != n)
+            {
+                ChangeMolecule();
+            }
         }
 
-        public void Inject(MoleculePresenter moleculePrefab)
+        private void ChangeMolecule()
         {
-            this.moleculePrefab = moleculePrefab;
-        }
+            tempN = n;
+            if (moleculePresenter != null)
+                Destroy(moleculePresenter);
 
-        public void Inject(BondPresenter bondPrefab)
-        {
-            this.bondPrefab = bondPrefab;
+            var mol = _moleculeRepository.GetMolecule(n);
+            moleculePresenter = Instantiate(moleculePrefab, transform);
+            moleculePresenter.molecule = mol;
+            moleculePresenter.atomPrefab = atomPrefab;
+            moleculePresenter.bondPrefab = bondPrefab;
+            moleculePresenter.atomColorPalette = atomColorPalette;
+            moleculePresenter.Init();
         }
     }
 }
