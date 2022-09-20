@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 namespace Galahad.Scripts.Editor
 {
-    [CustomEditor(typeof(MoleculeRepositoryInspector))]
+    [CustomEditor(typeof(MoleculeRepository))]
     public class MoleculeRepositoryInspector : UnityEditor.Editor
     {
         private static MoleculeRepository _moleculeRepository;
