@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Galahad.Contexts.MoleculeViewer.Domain.ValueObject;
 using UnityEngine;
-using Zenject;
 
 namespace Galahad.Scripts
 {
     [CreateAssetMenu]
-    public partial class AtomColorPalette : ISerializationCallbackReceiver
+    public class AtomColorPalette : ScriptableObject, ISerializationCallbackReceiver
     {
         [SerializeField] private List<Material> materials;
         [SerializeField] private List<string> names;
@@ -33,17 +32,4 @@ namespace Galahad.Scripts
             }
         }
     }
-
-#if UNITY_WSA
-    public partial class AtomColorPalette : ScriptableObject{}
-#else
-    public partial class AtomColorPalette : ScriptableObjectInstaller
-    {
-        public override void InstallBindings()
-        {
-            Container.BindInstance(this);
-        }
-    }
-
-#endif
 }
