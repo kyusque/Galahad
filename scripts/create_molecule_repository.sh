@@ -1,0 +1,1 @@
+/c/Program\ Files/Unity/Hub/Editor/2021.2.9f1/Editor/Unity.exe -batchmode -projectPath .. -quit -logFile log.txt -executeMethod Galahad.Editor.Cli.CreateMoleculeRepository $1

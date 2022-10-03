@@ -1,3 +1,4 @@
+using System;
 using Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate;
 using Galahad.Contexts.MoleculeViewer.Domain.ValueObject;
 using Galahad.Scripts;
@@ -11,6 +12,11 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
         [SerializeField] public AtomPresenter atomPrefab;
         [SerializeField] public BondPresenter bondPrefab;
         [SerializeField] public Molecule molecule;
+
+        private void OnDestroy()
+        {
+            Destroy(gameObject);
+        }
 
         public void Init()
         {
@@ -39,9 +45,7 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
         private void Update()
         {
             if (transform.localPosition != molecule.OffsetPosition.Value)
-            {
                 transform.localPosition = molecule.OffsetPosition.Value;
-            }
         }
     }
 }

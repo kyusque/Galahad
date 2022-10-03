@@ -12,8 +12,7 @@ namespace Galahad.Scripts
         [SerializeField] private List<Material> materials;
         [SerializeField] private List<string> names;
 
-        public Dictionary<AtomicNumber, Material> Dictionary { get; private set; } =
-            new Dictionary<AtomicNumber, Material>();
+        public Dictionary<AtomicNumber, Material> Dictionary { get; private set; } = new();
 
         public void OnBeforeSerialize()
         {

@@ -23,6 +23,15 @@ namespace Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate
             Title = title;
         }
 
+        public Molecule(List<Atom> atoms, List<Bond> bonds, Vector3 offsetPosition, string title)
+        {
+            Atoms = new Atoms(atoms);
+            Bonds = new Bonds(bonds);
+            Identifier = Guid.NewGuid().ToString();
+            OffsetPosition = new Position(offsetPosition);
+            Title = title;
+        }
+
         public Position OffsetPosition { get; private set; }
 
         public string Identifier { get; private set; }
