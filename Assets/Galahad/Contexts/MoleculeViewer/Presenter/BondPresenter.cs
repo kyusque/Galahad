@@ -19,14 +19,9 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
         private void Update()
         {
             if (transform.localPosition == (BeginAtom.Position.Value + EndAtom.Position.Value) * 0.5f)
-            {
                 UpdateAtomPositions();
-            }
 
-            if (tempBondOrder != model.BondOrder.Value)
-            {
-                UpdateBondOrder();
-            }
+            if (tempBondOrder != model.BondOrder.Value) UpdateBondOrder();
         }
 
         private void UpdateAtomPositions()
@@ -41,10 +36,7 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
         private void UpdateBondOrder()
         {
             tempBondOrder = model.BondOrder.Value;
-            for (var i = 0; i < transform.childCount; i++)
-            {
-                Destroy(transform.GetChild(i).gameObject);
-            }
+            for (var i = 0; i < transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
             switch (model.BondOrder.Value)
             {
                 case 0:
@@ -62,7 +54,7 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
                     break;
             }
         }
-        
+
         private void GenerateTwoBindings()
         {
             var left = GameObject.CreatePrimitive(PrimitiveType.Cube);

@@ -23,23 +23,9 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
             molecules = _moleculeRepository?.ToList();
         }
 
-        public void OnAfterDeserialize()
-        {
-            _moleculeRepository?.SetMolecules(molecules);
-        }
-
-        private void Start()
-        {
-            molecules = _moleculeRepository.ToList();
-            ChangeMolecule();
-        }
-
         private void Update()
         {
-            if (tempN != n)
-            {
-                ChangeMolecule();
-            }
+            if (tempN != n) ChangeMolecule();
         }
 
         private void ChangeMolecule()
@@ -55,6 +41,17 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
             moleculePresenter.bondPrefab = bondPrefab;
             moleculePresenter.atomColorPalette = atomColorPalette;
             moleculePresenter.Init();
+        }
+
+        public void OnAfterDeserialize()
+        {
+            _moleculeRepository?.SetMolecules(molecules);
+        }
+
+        private void Start()
+        {
+            molecules = _moleculeRepository.ToList();
+            ChangeMolecule();
         }
     }
 }

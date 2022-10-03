@@ -18,15 +18,10 @@ namespace Galahad.Contexts.MoleculeViewer.Presenter
 
         private void Update()
         {
-            if (transform.localPosition != model.Position.Value)
-            {
-                transform.localPosition = model.Position.Value;
-            }
+            if (transform.localPosition != model.Position.Value) transform.localPosition = model.Position.Value;
 
             if (chargeInfo.text != model.FormalCharge.Value.ToString())
-            {
                 chargeInfo.text = model.FormalCharge.Value == 0 ? "" : model.FormalCharge.Value.ToString();
-            }
         }
 
         private void InitChargeInfo()

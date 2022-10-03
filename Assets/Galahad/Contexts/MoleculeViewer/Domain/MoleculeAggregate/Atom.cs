@@ -22,6 +22,14 @@ namespace Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate
             FormalCharge = formalCharge;
         }
 
+        public Atom(int atomIndex, int atomicNumber, Vector3 position, int formalCharge)
+        {
+            AtomIndex = new AtomIndex(atomIndex);
+            AtomicNumber = (AtomicNumber) Enum.ToObject(typeof(AtomicNumber), atomicNumber);
+            Position = new Position(position);
+            FormalCharge = new FormalCharge(formalCharge);
+        }
+
         public AtomIndex AtomIndex { get; private set; }
         public Position Position { get; private set; }
         public FormalCharge FormalCharge { get; private set; }

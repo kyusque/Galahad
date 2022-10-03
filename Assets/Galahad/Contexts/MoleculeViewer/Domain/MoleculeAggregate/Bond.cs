@@ -20,6 +20,13 @@ namespace Galahad.Contexts.MoleculeViewer.Domain.MoleculeAggregate
             BondOrder = bondOrder;
         }
 
+        public Bond(int beginAtomIndex, int endAtomIndex, int bondOrder)
+        {
+            BeginAtomIndex = new AtomIndex(beginAtomIndex);
+            EndAtomIndex = new AtomIndex(endAtomIndex);
+            BondOrder = new BondOrder(bondOrder);
+        }
+
         public BondIndex BondIndex { get; private set; }
         public BondOrder BondOrder { get; private set; }
         public AtomIndex BeginAtomIndex { get; private set; }
