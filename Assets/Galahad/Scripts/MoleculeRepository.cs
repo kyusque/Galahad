@@ -7,15 +7,6 @@ using Galahad.Contexts.MoleculeViewer.Domain.ValueObject;
 using UnityEngine;
 
 
-public class Hoge
-{
-    public void Fuga()
-    {
-        Debug.Log("hoge");
-    }
-}
-
-
 namespace Galahad.Scripts
 {
     [CreateAssetMenu]
@@ -109,10 +100,6 @@ namespace Galahad.Scripts
             molecules.Add(new Molecule(new Atoms(atoms), new Bonds(bonds), new Position(Vector3.zero), ""));
         }
 
-        public void Hoge()
-        {
-            Debug.Log("hoge");
-        }
 
         public void UpdateMoleculeFromJson(string json)
         {

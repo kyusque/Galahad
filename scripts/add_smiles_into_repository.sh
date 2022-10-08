@@ -9,13 +9,14 @@ function usage(){
     echo $1
     cat << EOT
 Usage:
-    $(basename $0) FILE_NAME
+    $(basename $0) MOLECULE_REPOSITORY SMILES
 
 Description:
     Create new molecule repository file (.asset) in Assets/Galahad/Editor/Outputs
 
 Arguments:
-    FILE_NAME file name (e.g. repo.asset)
+    MOLECULE_REPOSITORY: asset file path in Assets folder (e.g. Assets/Galahad/Data/sample.asset)
+    SMILES: SMILES string
 
 EOT
     exit 1
@@ -23,9 +24,13 @@ EOT
 
 check_unity_exec
 if [ "$1" == "" ]; then
-    echo "[ERROR] Option argument is undefined."
+    echo "[ERROR] MOLECULE_REPOSITORY is undefined."
+    usage 
+fi
+if [ "$2" == "" ]; then
+    echo "[ERROR] SMILES is undefined."
     usage 
 fi
 
 if [ ! -d $SCRIPT_DIR/Temp ]; then mkdir $SCRIPT_DIR/Temp; fi
-$UNITY_CLI -executeMethod Galahad.Editor.Cli.CreateMoleculeRepository $1
+$UNITY_CLI -executeMethod Galahad.Editor.Cli.AddSmilesIntoMoleculeRepository $1 $2
