@@ -1,5 +1,5 @@
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-UNITY_CLI="Unity -batchmode -projectPath $SCRIPT_DIR/.. -quit -logFile - ->&1"
+UNITY_CLI="Unity -batchmode -projectPath $SCRIPT_DIR/.. -quit -logFile $SCRIPT_DIR/Temp/log.txt"
 
 function check_unity_exec(){
     type Unity > /dev/null || (echo "[ERROR] Unity executable can't be found in PATH. Add Unity directory into PATH" && exit 1)
